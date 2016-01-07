@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>RestaurantManager</display-name>
+  <servlet>
+    <servlet-name>LogInServlet</servlet-name>
+    <servlet-class>com.controller.LogInServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogInServlet</servlet-name>
+    <url-pattern>/LogInServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>com.controller.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/LogoutServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>crud_fclient</servlet-name>
+    <servlet-class>com.controller.FidelityServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>crud_fclient</servlet-name>
+    <url-pattern>/crud_fclient</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>crud_employer</servlet-name>
+    <servlet-class>com.controller.EmployerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>crud_employer</servlet-name>
+    <url-pattern>/crud_employer</url-pattern>
+  </servlet-mapping>
+</web-app>
