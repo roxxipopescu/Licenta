@@ -32,6 +32,12 @@
 <br/><br/><br/>
 
 
+   <div class="col-md-12 text-right">
+   <input type="submit" class="btn btn-danger" value="Place Order" onclick="return confirm('Order has been placed!');" >
+    </div>
+    
+<br/><br/>
+
 <div class="row">
  <div class="col-md-12">
     <table class="table" border="5">

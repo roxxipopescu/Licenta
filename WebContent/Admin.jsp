@@ -128,8 +128,8 @@
     
     <span class="addtocalendar atc-style-blue"  data-calendars="Google Calendar">
         <var class="atc_event">
-            <var class="atc_date_start">2016-05-04 12:00:00</var>
-            <var class="atc_date_end">2016-05-04 18:00:00</var>
+            <var class="atc_date_start">2016-01-11 20:00:00</var>
+            <var class="atc_date_end">2016-01-11 22:00:00</var>
             <var class="atc_timezone">Europe/Bucharest</var>
             <var class="atc_title">Jazz Concert</var>
             <var class="atc_description">Carla Redak</var>
