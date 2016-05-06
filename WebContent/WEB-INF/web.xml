@@ -33,4 +33,12 @@
     <servlet-name>crud_employer</servlet-name>
     <url-pattern>/crud_employer</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <servlet-name>crud_order</servlet-name>
+    <servlet-class>com.controller.SmallTableServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>crud_order</servlet-name>
+    <url-pattern>/crud_order</url-pattern>
+  </servlet-mapping>
 </web-app>

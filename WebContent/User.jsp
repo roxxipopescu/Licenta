@@ -10,7 +10,7 @@
     <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' >
    <link rel="stylesheet" type="text/css" href="/RestaurantManager/smallTable.css">
 </head>
-<body background="layout.png">
+<body background="Untitled.png">
 <%
   String user = null;
   if(session.getAttribute("user") == null){
@@ -60,9 +60,7 @@
 </div>
 
 <div class="smalltable">
-<form method = "post" action="SmallTableServlet"> 
-<input type="image" id="1" src="smallT.png" alt="Submit">
-</form>
+<input type="image" id="1" src="smallT.png" alt="Submit" onclick="location.href = 'http://localhost:8080/RestaurantManager/Table.jsp';">
 </div>
 
 <div class="seat">
@@ -90,9 +88,7 @@
 </div>
 <div class="col-md-4 text-center">
 <div class="smallt">
-<form method = "post" action="SmallTableServlet"> 
-<input type="image" name="2" src="smallT.png" alt="Submit">
-</form>
+<input type="image" name="2" src="smallT.png" alt="Submit" onclick="location.href = 'http://localhost:8080/RestaurantManager/Table.jsp';">
 </div>
 </div>
 <div class="col-md-4 ">
@@ -120,9 +116,7 @@
 </div>
 
 <div class="smalltable">
-<form method = "post" action="SmallTableServlet"> 
-<input type="image" name="3" src="smallT.png" alt="Submit">
-</form>
+<input type="image" name="3" src="smallT.png" alt="Submit" onclick="location.href = 'http://localhost:8080/RestaurantManager/Table.jsp';">
 </div>
 
 <div class="seat">
@@ -166,9 +160,7 @@
 </div>
 
 <div class="bigtable">
-<form method = "post" action="SmallTableServlet"> 
-<input type="image" name="4" src="bigTable.png" alt="Submit">
-</form>
+<input type="image" name="4" src="bigTable.png" alt="Submit" onclick="location.href = 'http://localhost:8080/RestaurantManager/Table.jsp';">
 </div>
 
 <div class="row">
@@ -220,9 +212,7 @@
 </div>
 <div class="col-md-4 text-center">
 <div class="smallt">
-<form method = "post" action="SmallTableServlet"> 
-<input type="image" name="5" src="smallT.png" alt="Submit">
-</form>
+<input type="image" name="5" src="smallT.png" alt="Submit" onclick="location.href = 'http://localhost:8080/RestaurantManager/Table.jsp';">
 </div>
 </div>
 <div class="col-md-4 ">
@@ -248,7 +238,7 @@
 
 </div>
 
-</div>
+
 
 <br/><br/>
 

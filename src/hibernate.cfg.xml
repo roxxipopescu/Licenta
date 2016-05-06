@@ -17,6 +17,7 @@
       
 
       <mapping class="com.model.User" />
+      <mapping class="com.model.Order" />
     
   </session-factory>
 </hibernate-configuration>

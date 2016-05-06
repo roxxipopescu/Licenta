@@ -1,3 +1,8 @@
+<%@ page import="com.dao.UserDao" %>
+<%@ page import="com.model.User" %>
+<%@ page import="org.hibernate.cfg.Configuration" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.io.PrintWriter" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -32,6 +37,15 @@
     }
   }
 %>
+
+<%
+  UserDao userDao = new UserDao(new Configuration().configure().buildSessionFactory());
+  List<User> myList = null;
+  myList = userDao.findUsers();
+  User a = myList.get(0);
+  
+  %>
+  
 <h3 align="center">Welcome to the administrator page!</h3>
 <div class="span7 text-right">
  <form action="LogoutServlet" method="post">
@@ -47,24 +61,30 @@
 
  <div class="col-md-6 ">
  <h4>Employees table</h4>
+  <input type="submit" class="btn btn-link"  value="Add a new employee" onclick="window.open('http://localhost:8080/RestaurantManager/AddNewEmployee.jsp','','width=1000,left=200,top=150, height=400')">   
     <table class="table" border="3">
         <thead>
         <tr>        
-        <th>Name</th>
-        <th>Address</th>
-        <th>Birth date</th>  
+        <th>Name, username & password</th>
+        <th>Role</th>
+        <th>Date of birth</th>  
         <th>Telephone</th>      
         <th>Contract no.</th>
         <th>Actions</th>
         </tr>
 		 </thead>
         <tbody>
-        <tr>
-        <td>Peter Timber</td>
-        <td>Southwest st.</td>
-        <td> 12-03-1987</td>
-        <td>0757330483</td>
-        <td> 20312391</td>
+         <%
+            for (User myuser : myList) {
+        %>
+        <TR>
+            <TD> <%= myuser.getFirstName()%> <%= myuser.getLastName()%> <br/><br/> 
+            	<%= myuser.getUserName()%>  <br/> 
+            	<%= myuser.getPassword()%> </TD>
+            <TD> <%= myuser.getRole()%></TD>
+         <td> <%= myuser.getBirthdate()%></td>
+        <td><%= myuser.getTelephone()%></td>
+        <td> <%= myuser.getContractnb()%></td>
         <td>	
         <form method="post" action="crud_employer">
                     <input type="hidden" name="id"  />
@@ -72,41 +92,21 @@
                 </form>
                 
         		<form method="post" action="crud_employer">
-                    <input type="hidden" name="id"  />
+                    <input type="hidden" name="id" value="<%=myuser.getId() %>" />
                     <input type="submit" class="btn btn-link" name="update_employer" value="Update">
                 </form>
                
                 <form method="post" action="crud_employer">
-                    <input type="hidden" name="id" />
+                    <input type="hidden" name="id" value="<%=myuser.getId() %>"/>
                     <input type="submit" class="btn btn-link" name="delete_employer"  value="Delete" onclick="return confirm('Are you sure you want to delete this item?');" >
                 </form>
                 
         </td>
         </tr>
-        <tr>
-        <td>Charlie McDougal</td>
-        <td>Westmister st.</td>
-        <td> 25-12-1975</td>
-        <td>0744329080</td>
-        <td> 15422376</td>
-        <td>	
-        <form method="post" action="crud_employer">
-                    <input type="hidden" name="id"  />
-                    <input type="submit" class="btn btn-link" name="view_salary" value="View income">
-                </form>
-                
-        		<form method="post" action="crud_employer">
-                    <input type="hidden" name="id"  />
-                    <input type="submit" class="btn btn-link" name="update_employer" value="Update">
-                </form>
-               
-                <form method="post" action="crud_employer">
-                    <input type="hidden" name="id" />
-                    <input type="submit" class="btn btn-link" name="delete_employer"  value="Delete" onclick="return confirm('Are you sure you want to delete this item?');" >
-                </form>
-                
-        </td>
-        </tr>
+        
+         <%
+            }
+        %>
         </tbody>
          </table>
     </div>
