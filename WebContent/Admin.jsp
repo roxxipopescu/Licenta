@@ -15,7 +15,7 @@
     <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' >
     <link href="http://addtocalendar.com/atc/1.5/atc-style-blue.css" rel="stylesheet" type="text/css">
 </head>
-<body >
+<body background="Untitled.png">
 <%
   String user = null;
   if(session.getAttribute("user") == null){
@@ -47,24 +47,49 @@
   %>
   
 <h3 align="center">Welcome to the administrator page!</h3>
-<div class="span7 text-right">
+<div class="row">
+<div class="col-md-12">
+<div class="col-md-1 text-left">   
+    <input type="submit" class="btn btn-primary" name="fmembers" value="View fidelity club members" onclick="window.location = 'http://localhost:8080/RestaurantManager/FidelityCardOwners.jsp';">   
+</div>
+
+<div class="col-md-11 text-right">
  <form action="LogoutServlet" method="post">
     <input type="submit" value="Logout" class="btn btn-danger ">
   </form>
 </div>
-<br/><br/>
+ 
+</div>
+</div>
+<br/><br/><br/>
 
 <div class="row">
 <div class="col-md-6">
+<div class="col-md-7 text-right">    
+<span class="addtocalendar btn-link"  data-calendars="Google Calendar">
+        <var class="atc_event">
+            <var class="atc_date_start">2016-01-11 20:00:00</var>
+            <var class="atc_date_end">2016-01-11 22:00:00</var>
+            <var class="atc_timezone">Europe/Bucharest</var>
+            <var class="atc_title">Jazz Concert</var>
+            <var class="atc_description">Carla Redak</var>
+            <var class="atc_location">Sneakers'n'Burgers</var>
+            <var class="atc_organizer">Roxana Popescu</var>
+            <var class="atc_organizer_email">roxxi.popescu@gmail.com</var>
+        </var>
+    </span>
+
+</div>
 <iframe src="https://calendar.google.com/calendar/embed?height=400&amp;wkst=2&amp;bgcolor=%23ffffff&amp;src=roxxi.popescu%40gmail.com&amp;color=%2329527A&amp;ctz=Europe%2FBucharest" style="border-width:0" width="650" height="400" frameborder="0" scrolling="no"></iframe>
 </div>
 
  <div class="col-md-6 ">
+ <div class="col-md-3 ">
  <h4>Employees table</h4>
- 
-                                               
- <input type="submit" class="btn btn-link"  value="Add a new employee" onclick="window.open('http://localhost:8080/RestaurantManager/AddNewEmployee.jsp','','width=1000,left=200,top=150, height=400')">    
-
+ </div>
+ <div class="col-md-5 text-right">                                         
+ <input type="submit" class="btn btn-link"  value="Add new employee" onclick="window.open('http://localhost:8080/RestaurantManager/AddNewEmployee.jsp','','width=1000,left=200,top=150, height=400')">    
+</div>
  
     <table class="table" border="3">
         <thead>
@@ -115,9 +140,7 @@
          </table>
     </div>
    
-     <div class="col-md-2">   
-    <input type="submit" class="btn btn-primary" name="fmembers" value="View fidelity club members" onclick="window.location = 'http://localhost:8080/RestaurantManager/FidelityCardOwners.jsp';">   
-    </div>
+    
    </div>
    
 <script type="text/javascript">(function () {
@@ -130,19 +153,7 @@
     </script>
 
     
-    <span class="addtocalendar atc-style-blue"  data-calendars="Google Calendar">
-        <var class="atc_event">
-            <var class="atc_date_start">2016-01-11 20:00:00</var>
-            <var class="atc_date_end">2016-01-11 22:00:00</var>
-            <var class="atc_timezone">Europe/Bucharest</var>
-            <var class="atc_title">Jazz Concert</var>
-            <var class="atc_description">Carla Redak</var>
-            <var class="atc_location">Sneakers'n'Burgers</var>
-            <var class="atc_organizer">Roxana Popescu</var>
-            <var class="atc_organizer_email">roxxi.popescu@gmail.com</var>
-        </var>
-    </span>
-
+   
 
 
 
