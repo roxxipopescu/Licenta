@@ -12,9 +12,25 @@
 </head>
 </head>
 <body background="dada.png">
+ <%
+  String user = null;
+  if(session.getAttribute("user") == null){
+    response.sendRedirect("index.html");
+  }else user = (String) session.getAttribute("user");
+  String userName = null;
+  String sessionID = null;
+  Cookie[] cookies = request.getCookies();
+  if(cookies !=null){
+    for(Cookie cookie : cookies){
+      if(cookie.getName().equals("user")) userName = cookie.getValue();
+      if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
+    }
+  }
+  
+%>
  
  <br/>
-  <form method="post"  action="crud_employer">
+  <form method="post"  action="crud_employer" onsubmit="return closeSelf()">
 <div class="col-md-12">
 <div class="col-md-6 text-center">
 <h4>Name:</h4>
@@ -44,10 +60,23 @@
 </div>
 <br/>
 <div class="col-md-12 text-center">
-<input type="submit"  class="btn btn-primary" name="add_employer" value="Add" onclick="return confirm('User has been added!');">
+<input type="submit"  class="btn btn-primary" name="add_employer" value="Add" >
 </div>
-</form>
-<br/><br/><br/>
- 
+</form> 
+
+<script type="text/javascript">
+
+window.onunload = refreshParent;
+function refreshParent() {
+    window.opener.location.reload();
+}
+
+function closeSelf(){
+    self.close();
+    return true;
+}
+</script>
+
+
 </body>
 </html>

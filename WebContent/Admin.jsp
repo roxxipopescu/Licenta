@@ -61,7 +61,11 @@
 
  <div class="col-md-6 ">
  <h4>Employees table</h4>
-  <input type="submit" class="btn btn-link"  value="Add a new employee" onclick="window.open('http://localhost:8080/RestaurantManager/AddNewEmployee.jsp','','width=1000,left=200,top=150, height=400')">   
+ 
+                                               
+ <input type="submit" class="btn btn-link"  value="Add a new employee" onclick="window.open('http://localhost:8080/RestaurantManager/AddNewEmployee.jsp','','width=1000,left=200,top=150, height=400')">    
+
+ 
     <table class="table" border="3">
         <thead>
         <tr>        

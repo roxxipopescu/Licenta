@@ -28,7 +28,29 @@ public class EmployerServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		 if (request.getParameter("view_salary")!=null)
+		int done=0;
+		  if (request.getParameter("add_employer")!=null)
+		 {		
+			  done=1;
+			  PrintWriter out = response.getWriter();	
+			  String name=request.getParameter("name");
+	            String surname=request.getParameter("surname");
+	            String role=request.getParameter("role");
+	            String birthdate=request.getParameter("birthdate");
+	            String username=request.getParameter("username");
+	            String password=request.getParameter("password");
+	            String telephone=request.getParameter("telephone");
+	            String contractnb=request.getParameter("contractnb");	     
+	           	            
+	            User newUser = new User( name, surname, username, password, role, birthdate, telephone, contractnb);
+	            UserDao uDao = new UserDao(new Configuration().configure().buildSessionFactory());
+	            uDao.addUser(newUser);
+
+	            
+	            
+		 }
+		 		
+		else if (request.getParameter("view_salary")!=null && done==0)
 		 {
 			 request.getRequestDispatcher("ViewIncomeHistory.jsp").forward(request,response);
 		 }
@@ -42,34 +64,18 @@ public class EmployerServlet extends HttpServlet {
 	            request.getRequestDispatcher("UpdateEmployee.jsp").forward(request,response);
 		 }
 		
-		 else  if (request.getParameter("add_employer")!=null)
-		 {
-			 	PrintWriter out = response.getWriter();
-
-	            String name=request.getParameter("name");
-	            String surname=request.getParameter("surname");
-	            String role=request.getParameter("role");
-	            String birthdate=request.getParameter("birthdate");
-	            String username=request.getParameter("username");
-	            String password=request.getParameter("password");
-	            String telephone=request.getParameter("telephone");
-	            String contractnb=request.getParameter("contractnb");	     
-	           	            
-	            User newUser = new User( name, surname, username, password, role, birthdate, telephone, contractnb);
-	            UserDao uDao = new UserDao(new Configuration().configure().buildSessionFactory());
-	            uDao.addUser(newUser);
-
-	            response.sendRedirect("Admin.jsp"); 
-		 }
-		 else  if (request.getParameter("delete_employer")!=null)
+		 else  if (request.getParameter("delete_employer")!=null && done==0)
 		 {
 			  String idToDelete =request.getParameter("id");
 	            UserDao uDao = new UserDao(new Configuration().configure().buildSessionFactory());
 	            uDao.removeUser(Integer.parseInt(idToDelete));
 	            PrintWriter out = response.getWriter();
-	            response.sendRedirect("Admin.jsp");
+	            //response.sendRedirect("Admin.jsp");
 		 }
 		 
+		 
+		 
+		
 	}
 
 }
