@@ -54,7 +54,14 @@ public class SmallTableServlet extends HttpServlet {
 		 }
 		 else  if (request.getParameter("update_order")!=null)
 		 {
-			 
+			 String idToUpdate = request.getParameter("id");
+	            OrderDao oDao = new OrderDao(new Configuration().configure().buildSessionFactory());
+
+	            Order a = oDao.findOrder(Integer.parseInt(idToUpdate));
+
+	            request.getSession().setAttribute("idToUp", Integer.parseInt(idToUpdate));
+	            request.getSession().setAttribute("toBeUpdated", a);
+	            request.getRequestDispatcher("EditOrder.jsp").forward(request,response);
 			 
 		 }
 		 

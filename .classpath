@@ -33,8 +33,6 @@
 	<classpathentry kind="lib" path="D:/facultate/an IV/My stuff sem 1/UID/UID Final Project/RestaurantManager/WebContent/WEB-INF/lib/hibernate-core-5.0.0.Final.jar"/>
 	<classpathentry kind="lib" path="D:/facultate/an IV/My stuff sem 1/UID/UID Final Project/RestaurantManager/WebContent/WEB-INF/lib/hibernate-jpa-2.1-api-1.0.0.Final.jar"/>
 	<classpathentry kind="lib" path="D:/facultate/an IV/My stuff sem 1/UID/UID Final Project/RestaurantManager/WebContent/WEB-INF/lib/jandex-1.2.2.Final.jar"/>
-	<classpathentry kind="lib" path="D:/facultate/an IV/My stuff sem 1/UID/UID Final Project/RestaurantManager/WebContent/WEB-INF/lib/javassist-3.4.GA.jar"/>
-	<classpathentry kind="lib" path="D:/facultate/an IV/My stuff sem 1/UID/UID Final Project/RestaurantManager/WebContent/WEB-INF/lib/javassist-3.18.1-GA.jar"/>
 	<classpathentry kind="lib" path="D:/facultate/an IV/My stuff sem 1/UID/UID Final Project/RestaurantManager/WebContent/WEB-INF/lib/jboss-logging-3.3.0.Final.jar"/>
 	<classpathentry kind="lib" path="D:/facultate/an IV/My stuff sem 1/UID/UID Final Project/RestaurantManager/WebContent/WEB-INF/lib/jta-1.1.jar"/>
 	<classpathentry kind="lib" path="D:/facultate/an IV/My stuff sem 1/UID/UID Final Project/RestaurantManager/WebContent/WEB-INF/lib/mysql-connector-java-5.1.6.jar"/>

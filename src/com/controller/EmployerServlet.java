@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.cfg.Configuration;
 import com.model.User;
+
+
 import com.dao.UserDao;
 
 /**
@@ -32,8 +34,14 @@ public class EmployerServlet extends HttpServlet {
 		 }
 		 else  if (request.getParameter("update_employer")!=null)
 		 {
-			 
+			 String idToUpdate = request.getParameter("id");
+	            UserDao uDao = new UserDao(new Configuration().configure().buildSessionFactory());
+	            User a = uDao.findUser(Integer.parseInt(idToUpdate));
+	            request.getSession().setAttribute("idToUp", Integer.parseInt(idToUpdate));
+	            request.getSession().setAttribute("toBeUpdated", a);	            	            
+	            request.getRequestDispatcher("UpdateEmployee.jsp").forward(request,response);
 		 }
+		
 		 else  if (request.getParameter("add_employer")!=null)
 		 {
 			 	PrintWriter out = response.getWriter();

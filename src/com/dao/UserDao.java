@@ -40,6 +40,28 @@ public class UserDao {
         }
         return users != null && !users.isEmpty() ? users.get(0):null;
     }
+    
+    public User findUser(int id){
+        Session session = factory.openSession();
+        Transaction tx = null;
+        List<User> users = null;
+        try{
+            tx=session.beginTransaction();
+            Query query = session.createQuery("FROM User where id= :id");
+            query.setParameter("id", id);
+            users=query.list();
+            tx.commit();
+        }catch(HibernateException e){
+            if (tx!=null){
+                tx.rollback();
+            }
+            LOGGER.error("", e);
+        }
+        finally{
+            session.close();
+        }
+        return users != null && !users.isEmpty() ? users.get(0):null;
+    }
 
     public User addUser(User user) {
         int userId = -1;
@@ -139,6 +161,7 @@ public class UserDao {
             tx.commit();
         } catch (HibernateException e)
         {
+        	e.printStackTrace();
             if (tx != null){
                 tx.rollback();
             }

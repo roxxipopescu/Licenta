@@ -33,12 +33,28 @@
     <servlet-name>crud_employer</servlet-name>
     <url-pattern>/crud_employer</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
+    <servlet-name>update_employee</servlet-name>
+    <servlet-class>com.controller.UpdateEmployeeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>update_employee</servlet-name>
+    <url-pattern>/update_employee</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>crud_order</servlet-name>
     <servlet-class>com.controller.SmallTableServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>crud_order</servlet-name>
     <url-pattern>/crud_order</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>edit_order</servlet-name>
+    <servlet-class>com.controller.EditOrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>edit_order</servlet-name>
+    <url-pattern>/edit_order</url-pattern>
   </servlet-mapping>
 </web-app>
