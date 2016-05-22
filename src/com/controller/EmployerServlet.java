@@ -28,10 +28,10 @@ public class EmployerServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int done=0;
+		
 		  if (request.getParameter("add_employer")!=null)
 		 {		
-			  done=1;
+			  
 			  PrintWriter out = response.getWriter();	
 			  String name=request.getParameter("name");
 	            String surname=request.getParameter("surname");
@@ -50,7 +50,7 @@ public class EmployerServlet extends HttpServlet {
 	            
 		 }
 		 		
-		else if (request.getParameter("view_salary")!=null && done==0)
+		else if (request.getParameter("view_salary")!=null)
 		 {
 			 request.getRequestDispatcher("ViewIncomeHistory.jsp").forward(request,response);
 		 }
@@ -64,13 +64,13 @@ public class EmployerServlet extends HttpServlet {
 	            request.getRequestDispatcher("UpdateEmployee.jsp").forward(request,response);
 		 }
 		
-		 else  if (request.getParameter("delete_employer")!=null && done==0)
+		 else  if (request.getParameter("delete_employer")!=null )
 		 {
 			  String idToDelete =request.getParameter("id");
 	            UserDao uDao = new UserDao(new Configuration().configure().buildSessionFactory());
 	            uDao.removeUser(Integer.parseInt(idToDelete));
 	            PrintWriter out = response.getWriter();
-	            //response.sendRedirect("Admin.jsp");
+	            response.sendRedirect("Admin.jsp");
 		 }
 		 
 		 

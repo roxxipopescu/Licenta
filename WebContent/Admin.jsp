@@ -79,7 +79,9 @@
         </var>
     </span>
 
+
 </div>
+<br/><br/>
 <iframe src="https://calendar.google.com/calendar/embed?height=400&amp;wkst=2&amp;bgcolor=%23ffffff&amp;src=roxxi.popescu%40gmail.com&amp;color=%2329527A&amp;ctz=Europe%2FBucharest" style="border-width:0" width="650" height="400" frameborder="0" scrolling="no"></iframe>
 </div>
 
