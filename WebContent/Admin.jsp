@@ -118,7 +118,7 @@
         <td> <%= myuser.getContractnb()%></td>
         <td>	
         <form method="post" action="crud_employer">
-                    <input type="hidden" name="id"  />
+                    <input type="hidden" name="id" value="<%=myuser.getId() %>" />
                     <input type="submit" class="btn btn-link" name="view_salary" value="View income">
                 </form>
                 

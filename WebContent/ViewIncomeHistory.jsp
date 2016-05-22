@@ -1,3 +1,4 @@
+<%@ page import="com.model.User" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -10,7 +11,26 @@
     <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' >
 </head>
 <body background="bkg.jpg">
-<h3 align="center">Peter's income from clients</h3>
+<%
+  String user = null;
+  if(session.getAttribute("user") == null){
+    response.sendRedirect("index.html");
+  }else user = (String) session.getAttribute("user");
+  String userName = null;
+  String sessionID = null;
+  Cookie[] cookies = request.getCookies();
+  if(cookies !=null){
+    for(Cookie cookie : cookies){
+      if(cookie.getName().equals("user")) userName = cookie.getValue();
+      if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
+    }
+  }
+  
+  User a = (User)request.getSession().getAttribute("toViewIncome");
+%>
+
+
+<h3 align="center"><%=a.getFirstName() %>'s income from clients</h3>
 <br/>	
 
 <div class="row">
