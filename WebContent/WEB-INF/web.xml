@@ -25,9 +25,6 @@
     <servlet-name>crud_fclient</servlet-name>
     <url-pattern>/crud_fclient</url-pattern>
   </servlet-mapping>
-  
-  
-  
   <servlet>
     <servlet-name>crud_employer</servlet-name>
     <servlet-class>com.controller.EmployerServlet</servlet-class>
@@ -44,8 +41,6 @@
     <servlet-name>update_employee</servlet-name>
     <url-pattern>/update_employee</url-pattern>
   </servlet-mapping>
-  
-  
   <servlet>
     <servlet-name>crud_order</servlet-name>
     <servlet-class>com.controller.SmallTableServlet</servlet-class>
@@ -61,5 +56,13 @@
   <servlet-mapping>
     <servlet-name>edit_order</servlet-name>
     <url-pattern>/edit_order</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>crud_history</servlet-name>
+    <servlet-class>com.controller.IncomeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>crud_history</servlet-name>
+    <url-pattern>/crud_history</url-pattern>
   </servlet-mapping>
 </web-app>

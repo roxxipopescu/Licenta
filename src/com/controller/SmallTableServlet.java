@@ -2,6 +2,9 @@ package com.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,8 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.hibernate.cfg.Configuration;
 
 import com.dao.OrderDao;
-import com.dao.UserDao;
 import com.model.Order;
+import com.dao.IncomeDao;
+import com.model.Income;
 
 /**
  * Servlet implementation class SmallTableServlet
@@ -28,16 +32,21 @@ public class SmallTableServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 if (request.getParameter("add_order")!=null)
+		
+		int currUserId=Integer.parseInt(request.getParameter("idUser")); 
+		
+		if (request.getParameter("add_order")!=null)
 		 {
 			 PrintWriter out = response.getWriter();
 
 	            String quantity=request.getParameter("quantity");
-	            String dish=request.getParameter("dish");
+	            String dish=request.getParameter("dishname");
 	            String specifications=request.getParameter("specifications");
 	            String fidelitycarddiscount=request.getParameter("fidelitycarddiscount");
+	            
+	            int currIncomeId=1;
 	            	     	           	            
-	            Order newOrder = new Order( Integer.parseInt(quantity), dish, specifications, fidelitycarddiscount);
+	            Order newOrder = new Order( Integer.parseInt(quantity), dish, specifications, fidelitycarddiscount, currUserId, currIncomeId);
 	            OrderDao oDao = new OrderDao(new Configuration().configure().buildSessionFactory());
 	            oDao.addOrder(newOrder);
 
@@ -65,6 +74,29 @@ public class SmallTableServlet extends HttpServlet {
 			 
 		 }
 		 
+		 else if (request.getParameter("close_order")!=null)
+		 {
+			 String currentDate = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+			 int orderTotalCost=0;
+			 
+			 OrderDao orderDao = new OrderDao(new Configuration().configure().buildSessionFactory());
+			  List<Order> myList = null;
+			  myList = orderDao.findOrders();
+			  Order a = myList.get(0);
+			 // for (Order myorder : myList) {
+			//	  orderTotalCost+=myorder;
+			 // }
+			 
+			    Income newIncome = new Income( currUserId, currentDate ,orderTotalCost);
+	            IncomeDao iDao = new IncomeDao(new Configuration().configure().buildSessionFactory());
+	            iDao.addIncome(newIncome);
+	            
+		 }
+		 
+		 else if (request.getParameter("place_order")!=null)
+		 {
+			 
+		 }
 		 
 		 
 		

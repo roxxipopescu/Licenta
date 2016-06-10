@@ -45,6 +45,7 @@ public class LogInServlet extends HttpServlet {
 	                HttpSession session = request.getSession();
 	                session.setAttribute("user", user);
 	                session.setAttribute("role", loginUser.getRole());
+	                session.setAttribute("id", loginUser.getId());
 	                session.setMaxInactiveInterval(20*60);
 	                Cookie userName = new Cookie("user", user);
 	                Cookie role = new Cookie("role", loginUser.getRole());
@@ -63,6 +64,7 @@ public class LogInServlet extends HttpServlet {
 	                {
 	                    response.sendRedirect("Chef.jsp");
 	                }
+	                
 
 	            }
 	           else{

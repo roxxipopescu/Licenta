@@ -1,6 +1,13 @@
 <%@ page import="com.model.User" %>
+<%@ page import="com.model.Income" %>
+<%@ page import="com.dao.IncomeDao" %>
+<%@ page import="com.dao.OrderDao" %>
+<%@ page import="com.model.Order" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ page import="org.hibernate.cfg.Configuration" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.io.PrintWriter" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,140 +34,74 @@
   }
   
   User a = (User)request.getSession().getAttribute("toViewIncome");
+  
+  IncomeDao incomeDao = new IncomeDao(new Configuration().configure().buildSessionFactory());
+  List<Income> myList = null;
+  myList = incomeDao.findIncomes();
+  Income i = myList.get(0);
+  
+  OrderDao orderDao = new OrderDao(new Configuration().configure().buildSessionFactory());
+  List<Order> myOrderList = null;
+  myOrderList = orderDao.findOrders();
+  Order o = myOrderList.get(0);
 %>
 
 
 <h3 align="center"><%=a.getFirstName() %>'s income from clients</h3>
-<br/>	
+<br/>	<br/><br/>
 
 <div class="row">
- <div class="col-md-6 ">
+<div class="col-md-3">
+</div>
+ <div class="col-md-6"  align="center">
     <table class="table" align="center" border="3">
         <thead>
         <tr>
         <th>Date</th>
-        <th>Order</th>
-        <th>Check no.</th>
+        <th>Dishes</th>        
         <th>Check value</th>
         <th style="text-align:center">Actions</th>
         </tr>
 		 </thead>
         <tbody>
+        <% for (Income myincome : myList) 
+        	if(myincome.getWaiterId()==a.getId())
+        	{
+        %>
         <tr>
-        <td> 12/12/2014</td>
-        <td> Penne Carbonara</td>
-        <td> 120031</td>     
-        <td> 32.00 $</td>
+        <td><%=myincome.getDate() %></td>
+        
         <td>
-        <div class="row">
- 			<div class="col-md-6 text-center ">	      
-        		<form method="post" action="crud_history">
-                    <input type="hidden" name="id"  />
-                    <input type="submit" class="btn btn-link" name="update_history" value="Update">
-                </form>
-               </div>
-               <div class="col-md-2  ">	  
+        <% for (Order myorders : myOrderList) 
+        	if(myorders.getIncomeId()==myincome.getId())
+        	{
+        %>
+        -<%=myorders.getDish()%> <br/>
+        
+        <%
+        	}
+        %>        
+         </td> 
+        <td><%=myincome.getOrderTotalCost() %> $</td>
+        <td style="text-align:center">        	            		  
                 <form method="post" action="crud_history">
-                    <input type="hidden" name="id" />
+                    <input type="hidden" name="id" value="<%=myincome.getId() %>"/>
                     <input type="submit" class="btn btn-link" name="delete_history"  value="Delete" onclick="return confirm('Are you sure you want to delete this item?');" >
                 </form>
-                </div>
-             </div>   
+              
         </td>
-        </tr>
-        <tr>
-        <td> 25/01/2015</td>
-        <td> Duck Confit Burger | Sweet Potatoes</td>
-        <td> 283712</td>     
-        <td> 135.55 $</td>
-        <td>
-        <div class="row">
- 			<div class="col-md-6 text-center ">	      
-        		<form method="post" action="crud_history">
-                    <input type="hidden" name="id"  />
-                    <input type="submit" class="btn btn-link" name="update_history" value="Update">
-                </form>
-               </div>
-               <div class="col-md-2  ">	  
-                <form method="post" action="crud_history">
-                    <input type="hidden" name="id" />
-                    <input type="submit" class="btn btn-link" name="delete_history"  value="Delete" onclick="return confirm('Are you sure you want to delete this item?');" >
-                </form>
-                </div>
-             </div>   
-        </td>
-        </tr>
-        <tr>
-        <td> 03/04/2015</td>
-        <td> Cheese Plate | Corcova Wine</td>
-        <td> 890023</td>     
-        <td> 63.25 $</td>
-        <td>
-        <div class="row">
- 			<div class="col-md-6 text-center ">	      
-        		<form method="post" action="crud_history">
-                    <input type="hidden" name="id"  />
-                    <input type="submit" class="btn btn-link" name="update_history" value="Update">
-                </form>
-               </div>
-               <div class="col-md-2  ">	  
-                <form method="post" action="crud_history">
-                    <input type="hidden" name="id" />
-                    <input type="submit" class="btn btn-link" name="delete_history"  value="Delete" onclick="return confirm('Are you sure you want to delete this item?');" >
-                </form>
-                </div>
-             </div>   
-        </td>
-        </tr>
-        <tr>
-        <td> 23/10/2015</td>
-        <td> Tiramisu | Noble 5 Wine</td>
-        <td> 455233</td>     
-        <td> 86.89 $</td>
-        <td>
-        <div class="row">
- 			<div class="col-md-6 text-center ">	      
-        		<form method="post" action="crud_history">
-                    <input type="hidden" name="id"  />
-                    <input type="submit" class="btn btn-link" name="update_history" value="Update">
-                </form>
-               </div>
-               <div class="col-md-2  ">	  
-                <form method="post" action="crud_history">
-                    <input type="hidden" name="id" />
-                    <input type="submit" class="btn btn-link" name="delete_history"  value="Delete" onclick="return confirm('Are you sure you want to delete this item?');" >
-                </form>
-                </div>
-             </div>   
-        </td>
-        </tr>
+        </tr>       
+        <%
+            }
+        %>
         </tbody>
          </table>
     </div>
     
-    <div class="col-md-1 text-center">
-     <h4>Date:</h4>
-    <input type="text" name="date" />
+  
     
     </div>
-    <div class="col-md-1 text-center">
-   <h4>Order:</h4>
-    <input type="text" name="order" />
-    
-    </div>
-    <div class="col-md-1 text-center">
-   <h4>Check no.:</h4>
-    <input type="text" name="checknb" /> 
-     <br/><br/> 
-    <input type="submit" class="btn btn-info" name="add_fclient" value="Add">
-    </div>
-    <div class="col-md-1 text-center">
-    <h4>Value:</h4>
-    <input type="text" name="value" /> 
-   
-    
-    </div>
-   </div>
+ 
 
 <br/><br/><br/>
    

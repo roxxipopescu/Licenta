@@ -18,6 +18,7 @@
 
       <mapping class="com.model.User" />
       <mapping class="com.model.Order" />
-    
+      <mapping class="com.model.Income" />
+      <mapping class="com.model.Menu" />
   </session-factory>
 </hibernate-configuration>
