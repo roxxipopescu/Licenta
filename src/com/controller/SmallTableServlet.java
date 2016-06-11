@@ -45,9 +45,9 @@ public class SmallTableServlet extends HttpServlet {
 	            String fidelitycarddiscount=request.getParameter("fidelitycarddiscount");
 	            
 	            int currUserId=Integer.parseInt(request.getParameter("idUser"));
-	            int currIncomeId=1;
+	            
 	            	     	           	            
-	            Order newOrder = new Order( Integer.parseInt(quantity), dish, specifications, fidelitycarddiscount, currUserId, currIncomeId);
+	            Order newOrder = new Order( Integer.parseInt(quantity), dish, specifications, fidelitycarddiscount, currUserId);
 	            OrderDao oDao = new OrderDao(new Configuration().configure().buildSessionFactory());
 	            oDao.addOrder(newOrder);
 
@@ -93,7 +93,11 @@ public class SmallTableServlet extends HttpServlet {
 			 int price=0;
 			 String orderedDishes="";
 			 for (Order myorder : myList) {
-			 orderedDishes = orderedDishes.concat(myorder.getDish()).concat(", ");
+				 if (myList.indexOf(myorder) == myList.size()-1){
+					 orderedDishes = orderedDishes.concat(myorder.getDish()).concat(".");
+				 }
+				 else 
+					 orderedDishes = orderedDishes.concat(myorder.getDish()).concat(", ");
 			 }
 			 
 			 for (Menu mymenu : menuList) {
@@ -110,7 +114,9 @@ public class SmallTableServlet extends HttpServlet {
 		    Income newIncome = new Income( currentUserId, currentDate ,orderTotalCost, orderedDishes);
 	        IncomeDao iDao = new IncomeDao(new Configuration().configure().buildSessionFactory());
 	        iDao.addIncome(newIncome);
-	            
+	          
+	        
+	        
 	        response.sendRedirect("Table.jsp");			 
 		 }
 		 
