@@ -17,7 +17,9 @@ import org.hibernate.cfg.Configuration;
 import com.dao.OrderDao;
 import com.model.Order;
 import com.dao.IncomeDao;
+import com.dao.MenuDao;
 import com.model.Income;
+import com.model.Menu;
 
 /**
  * Servlet implementation class SmallTableServlet
@@ -33,8 +35,6 @@ public class SmallTableServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int currUserId=Integer.parseInt(request.getParameter("idUser")); 
-		
 		if (request.getParameter("add_order")!=null)
 		 {
 			 PrintWriter out = response.getWriter();
@@ -44,6 +44,7 @@ public class SmallTableServlet extends HttpServlet {
 	            String specifications=request.getParameter("specifications");
 	            String fidelitycarddiscount=request.getParameter("fidelitycarddiscount");
 	            
+	            int currUserId=Integer.parseInt(request.getParameter("idUser"));
 	            int currIncomeId=1;
 	            	     	           	            
 	            Order newOrder = new Order( Integer.parseInt(quantity), dish, specifications, fidelitycarddiscount, currUserId, currIncomeId);
@@ -76,26 +77,46 @@ public class SmallTableServlet extends HttpServlet {
 		 
 		 else if (request.getParameter("close_order")!=null)
 		 {
-			 String currentDate = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
-			 int orderTotalCost=0;
-			 
+			 String currentDate = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(new Date());
+			 			 
 			 OrderDao orderDao = new OrderDao(new Configuration().configure().buildSessionFactory());
-			  List<Order> myList = null;
-			  myList = orderDao.findOrders();
-			  Order a = myList.get(0);
-			 // for (Order myorder : myList) {
-			//	  orderTotalCost+=myorder;
-			 // }
+			 List<Order> myList = null;
+			 myList = orderDao.findOrders();
+			 Order a = myList.get(0);
+			
+			 MenuDao menuDao = new MenuDao(new Configuration().configure().buildSessionFactory());
+			 List<Menu> menuList = null;
+			 menuList = menuDao.findMenuItems();
+			 Menu m = menuList.get(0);
 			 
-			    Income newIncome = new Income( currUserId, currentDate ,orderTotalCost);
-	            IncomeDao iDao = new IncomeDao(new Configuration().configure().buildSessionFactory());
-	            iDao.addIncome(newIncome);
+			 int orderTotalCost=0;
+			 int price=0;
+			 String orderedDishes="";
+			 for (Order myorder : myList) {
+			 orderedDishes = orderedDishes.concat(myorder.getDish()).concat(", ");
+			 }
+			 
+			 for (Menu mymenu : menuList) {
+				 for (Order myorder : myList) {
+					 if (myorder.getDish().equals(mymenu.getDish()))
+					 {						 
+						 price = mymenu.getDishPrice();
+						 orderTotalCost+=price * myorder.getQuantity();
+					 }
+				 }					
+			  }
+						
+			int currentUserId=Integer.parseInt(request.getParameter("idUser"));
+		    Income newIncome = new Income( currentUserId, currentDate ,orderTotalCost, orderedDishes);
+	        IncomeDao iDao = new IncomeDao(new Configuration().configure().buildSessionFactory());
+	        iDao.addIncome(newIncome);
 	            
+	        response.sendRedirect("Table.jsp");			 
 		 }
 		 
 		 else if (request.getParameter("place_order")!=null)
 		 {
-			 
+			 //SELFIE PULA
 		 }
 		 
 		 

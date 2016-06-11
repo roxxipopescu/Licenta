@@ -33,6 +33,7 @@ public class OrderDao {
                 tx.rollback();
             }
             LOGGER.error("", e);
+            System.out.println(e);
         } finally {
             session.close();
         }
@@ -77,6 +78,7 @@ public class OrderDao {
                 tx.rollback();
             }
             LOGGER.error("", e);
+         
         } finally {
             session.close();
         }

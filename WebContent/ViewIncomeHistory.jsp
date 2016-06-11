@@ -72,15 +72,10 @@
         <td><%=myincome.getDate() %></td>
         
         <td>
-        <% for (Order myorders : myOrderList) 
-        	if(myorders.getIncomeId()==myincome.getId())
-        	{
-        %>
-        -<%=myorders.getDish()%> <br/>
         
-        <%
-        	}
-        %>        
+        <%=myincome.getOrderedDishes() %> <br/>
+        
+        
          </td> 
         <td><%=myincome.getOrderTotalCost() %> $</td>
         <td style="text-align:center">        	            		  
@@ -107,14 +102,10 @@
    
    <div class="row">
    <div class="col-md-12 text-center">
-   <input type="submit" class="btn btn-default" value="Back" onclick="goBack()" >
+   <input type="submit" class="btn btn-default" value="Back" onclick="location.href = 'http://localhost:8080/RestaurantManager/Admin.jsp'; " >
     </div>
     </div>
 
-<script>
-function goBack() {
-    window.history.back();
-}
-</script>
+
 </body>
 </html>

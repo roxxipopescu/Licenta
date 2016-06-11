@@ -54,9 +54,7 @@
 <div class="row">
 <div class="col-md-4 text-center">
 <div class="seat">
-<form method = "post" action="SeatServlet"> 
-<input type="image"  src="seat.png" alt="Submit">
-</form>
+<img  src="seat.png" >
 </div>
 
 <div class="smalltable">
@@ -64,26 +62,20 @@
 </div>
 
 <div class="seat">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat2.png" alt="Submit">
-</form>
+<img src="seat2.png" >
 </div>
 </div>
 
 <div class="col-md-4 text-center">
-<div class="seat">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat.png" alt="Submit">
-</form>
+<div class="seat"> 
+<img src="seat.png" >
 </div>
 
 <div class="row">
 
 <div class="col-md-4 text-right ">
 <div class="seat3">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat3.png" alt="Submit">
-</form>
+<img src="seat3.png" >
 </div>
 </div>
 <div class="col-md-4 text-center">
@@ -93,26 +85,21 @@
 </div>
 <div class="col-md-4 ">
 <div class="seat4">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat4.png" alt="Submit">
-</form>
+<img src="seat4.png" >
+
 </div>
 </div>
 
 </div>
 
 <div class="seat">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat2.png" alt="Submit">
-</form>
+<img src="seat2.png" >
 </div>
 </div>
 
 <div class="col-md-4 text-center">
 <div class="seat">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat.png" alt="Submit">
-</form>
+<img src="seat.png" >
 </div>
 
 <div class="smalltable">
@@ -120,9 +107,7 @@
 </div>
 
 <div class="seat">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat2.png" alt="Submit">
-</form>
+<img src="seat2.png">
 </div>
 </div>
 
@@ -136,25 +121,19 @@
 <div class="row">
 <div class="col-md-4 text-center">
 <div class="seatBigLeft">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat.png" alt="Submit">
-</form>
+<img src="seat.png">
 </div>
 </div>
 
 <div class="col-md-4 text-center">
 <div class="seat">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat.png" alt="Submit">
-</form>
+<img src="seat.png" >
 </div>
 </div>
 
 <div class="col-md-4 text-center">
 <div class="seatBigRight">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat.png" alt="Submit">
-</form>
+<img src="seat.png" >
 </div>
 </div>
 </div>
@@ -166,25 +145,19 @@
 <div class="row">
 <div class="col-md-4 text-center">
 <div class="seatBigLeft">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat2.png" alt="Submit">
-</form>
+<img src="seat2.png" >
 </div>
 </div>
 
 <div class="col-md-4 text-center">
 <div class="seat">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat2.png" alt="Submit">
-</form>
+<img src="seat2.png">
 </div>
 </div>
 
 <div class="col-md-4 text-center">
 <div class="seatBigRight">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat2.png" alt="Submit">
-</form>
+<img src="seat2.png" >
 </div>
 </div>
 </div>
@@ -196,18 +169,14 @@
 <div class="col-md-6 text-center">
 
 <div class="seat">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat.png" alt="Submit">
-</form>
+<img src="seat.png" >
 </div>
 
 <div class="row">
 
 <div class="col-md-4 text-right ">
 <div class="seat3d">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat3.png" alt="Submit">
-</form>
+<img src="seat3.png" >
 </div>
 </div>
 <div class="col-md-4 text-center">
@@ -217,18 +186,14 @@
 </div>
 <div class="col-md-4 ">
 <div class="seat4d">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat4.png" alt="Submit">
-</form>
+<img src="seat4.png" >
 </div>
 </div>
 
 </div>
 
 <div class="seat">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat2.png" alt="Submit">
-</form>
+<img src="seat2.png">
 </div>
 </div>
 

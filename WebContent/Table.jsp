@@ -10,6 +10,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<style>
+#back{
+	width:150px;
+}
+#add{
+	width:170px;
+}
+#qty{
+	width:48px;
+}
+#nb{
+    width:40px;
+} 
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Table Service</title>
 	<link rel="stylesheet" href="bootstrap.min.css">
@@ -47,17 +61,26 @@
   
   %>
  
-<form method="post"  action="crud_order">
+
 <h2 align="center" >Table no. 1 </h2>
 
-<div class="col-md-12 text-right">
+<div class="row">
+<div class="col-md-12 ">
+<div class="col-md-6 text-left">
+ <input type="submit" class="btn btn-primary" value="Back" id="back" onclick="location.href = 'http://localhost:8080/RestaurantManager/User.jsp'; " >
+   </div>
+   <div class="col-md-6 text-right">
     <input type="submit" value="Reserve this table" class="btn btn-primary" onclick="">  
+  </div>
+  </div>
   </div>
  
  
-<br/><br/>
+<form method="post"  action="crud_order">
 <div class="span7 text-center">
-<h4>Dish:</h4>
+<h4>Quantity:</h4>
+<input type="number" min="1" max="20" step="1" id="qty"  name="quantity" value="1" />
+<h4>Dish/Beverage:</h4>
 <input list="dishes" name="dishname" type="text" >
 <datalist id="dishes">
 <%
@@ -68,15 +91,13 @@
   } 
   %> 
 </datalist>
-<h4>Quantity:</h4>
-<input type="text" name="quantity">
 <h4>Specifications:</h4>
-<input type="text" name="specifications">
+<input type="text" name="specifications" style="text-align:center;" value="none">
 <h4>Fidelity card discount:</h4>
-<input type="text" name="fidelitycarddiscount">
+<input type="number" min="0" max="100" step="1" id="nb"  name="fidelitycarddiscount" value="0" /> %
 <br/><br/>
 <input type="hidden" name="idUser" value="<%=currentUserId %>" />
-<input type="submit"  class="btn btn-primary" name="add_order" value="Add">
+<input type="submit"  class="btn btn-primary" name="add_order" id="add" value="Add">
 </div>
 </form>
 <br/><br/>
@@ -85,6 +106,7 @@
 <div class="row">
 <div class="col-md-12 ">
 <div class="col-md-6 text-left">
+<input type="hidden" name="idUser" value="<%=currentUserId %>" />
   <input type="submit" value="Close Order" class="btn btn-danger" name="close_order" onclick="return confirm('Are you sure you want to close current order?');">  
 </div>
 <div class="col-md-6 text-right">
@@ -102,9 +124,9 @@
         <thead>
         <tr>
         <th>Quantity</th>
-         <th>Dish</th>
+         <th>Dish/Beverage</th>
           <th>Specifications</th>
-          <th>Fidelity card no. & Discount</th>
+          <th>Fidelity card discount</th>
           <th>Actions</th>
         </tr>
 		 </thead>
@@ -116,7 +138,7 @@
          <TD> <%= myorder.getQuantity()%>  </TD>
             <TD> <%= myorder.getDish()%>  </TD>
             <TD>	<%= myorder.getSpecifications()%>  </TD>
-           <TD><%= myorder.getFidelityCardDiscount()%> </TD>
+           <TD><%= myorder.getFidelityCardDiscount()%> % </TD>
             
           
         <td> <form method="post" action="crud_order">
@@ -140,9 +162,10 @@
    <br/>
     <div class="row">
    <div class="col-md-12 text-center">
-   <input type="submit" class="btn btn-default" value="Back" onclick="location.href = 'http://localhost:8080/RestaurantManager/User.jsp'; " >
+  
     </div>
     </div>
+    
     
 </body>
 </html>
