@@ -1,3 +1,7 @@
+<%@ page import="org.hibernate.cfg.Configuration" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.dao.RestaurantTablesDao" %>
+<%@ page import="com.model.RestaurantTables" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -25,6 +29,12 @@
       if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
     }
   }
+  
+  RestaurantTablesDao rtDao = new RestaurantTablesDao(new Configuration().configure().buildSessionFactory());
+  List<RestaurantTables> myrtList = null;
+  myrtList = rtDao.findRestaurantTables();
+  
+  
 %>
 <div class="span7 text-center">
 <h3>Welcome <%=userName %> to your waiter page.</h3>
@@ -44,6 +54,7 @@
 </div>
 <br/><br/>
 
+
 <div class="row">
  <div class="col-md-6 text-center">
  <form action="FidelityServlet" method="post">
@@ -57,7 +68,7 @@
   </form>
 </div>
 </div>
-<br/><br/><br/>
+<br/><br/>
 
 <div class="row">
 <div class="col-md-4 text-center">
@@ -66,8 +77,8 @@
 </div>
 
 <div class="smalltable">
-<form method="post"  action="Table.jsp">
-<input type="hidden" name="tablenb" value="1">
+<form method="post"  action="assign_tables">
+<input type="hidden" name="tablenb" value="<%= myrtList.get(0).getId() %>">
 <input type="image"  src="smallT.png" alt="Submit" >
 </form>
 </div>
@@ -91,8 +102,8 @@
 </div>
 <div class="col-md-4 text-center">
 <div class="smallt">
-<form method="post" action="Table.jsp">
-<input type="hidden" name="tablenb" value="2">
+<form method="post" action="assign_tables">
+<input type="hidden" name="tablenb" value="<%= myrtList.get(1).getId() %>">
 <input type="image"  src="smallT.png" alt="Submit" >
 </form>
 </div>
@@ -117,8 +128,8 @@
 </div>
 
 <div class="smalltable">
-<form method="post" action="Table.jsp">
-<input type="hidden" name="tablenb" value="3">
+<form method="post" action="assign_tables">
+<input type="hidden" name="tablenb" value="<%= myrtList.get(2).getId() %>">
 <input type="image"  src="smallT.png" alt="Submit">
 </form>
 </div>
@@ -156,8 +167,8 @@
 </div>
 
 <div class="bigtable">
-<form method="post" action="Table.jsp">
-<input type="hidden" name="tablenb" value="4">
+<form method="post" action="assign_tables">
+<input type="hidden" name="tablenb" value="<%= myrtList.get(3).getId() %>">
 <input type="image"  src="bigTable.png" alt="Submit" >
 </form>
 </div>
@@ -201,8 +212,8 @@
 </div>
 <div class="col-md-4 text-center">
 <div class="smallt">
-<form method="post" action="Table.jsp">
-<input type="hidden" name="tablenb" value="5">
+<form method="post" action="assign_tables">
+<input type="hidden" name="tablenb" value="<%= myrtList.get(4).getId() %>">
 <input type="image"  src="smallT.png" alt="Submit">
 </form>
 </div>
@@ -219,7 +230,6 @@
 <img src="seat2.png">
 </div>
 </div>
-
 
 
 

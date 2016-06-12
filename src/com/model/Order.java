@@ -11,10 +11,11 @@ public class Order {
     private String specifications;
     private String fidelitycarddiscount;
     private int waiter_id;
+    private int table_id;
    
     public Order(){};
     public Order(int id, int quantity,String dish, String specifications, String fidelitycarddiscount, 
-    		int waiter_id)
+    		int waiter_id, int table_id)
     {
     	this.id = id;
     	this.quantity = quantity;
@@ -22,13 +23,14 @@ public class Order {
     	this.specifications = specifications;
     	this.fidelitycarddiscount = fidelitycarddiscount;
     	this.waiter_id=waiter_id;
+    	this.table_id = table_id;
     	
     	
     	
     }
     
     public Order(int quantity,String dish, String specifications, String fidelitycarddiscount, 
-    		int waiter_id)
+    		int waiter_id, int table_id)
     {
     	
     	this.quantity = quantity;
@@ -36,6 +38,7 @@ public class Order {
     	this.specifications = specifications;
     	this.fidelitycarddiscount = fidelitycarddiscount;
     	this.waiter_id=waiter_id;
+    	this.table_id = table_id;
     	
     	
     }
@@ -108,6 +111,16 @@ public class Order {
              public void setWaiterId(int waiter_id) {
                  this.waiter_id = waiter_id;
              }
+             
+             @Basic
+             @Column(name = "table_id")
+               public int getTableId() {
+                   return table_id;
+               }
+
+               public void setTableId(int table_id) {
+                   this.table_id = table_id;
+               }
                         
 
            @Override
@@ -123,6 +136,7 @@ public class Order {
                if (specifications != null ? !specifications.equals(that.specifications) : that.specifications != null) return false;
                if (fidelitycarddiscount != null ? !fidelitycarddiscount.equals(that.fidelitycarddiscount) : that.fidelitycarddiscount != null) return false;
                if (waiter_id != that.waiter_id) return false;
+               if (table_id != that.table_id) return false;
                
                
                return true;
@@ -136,6 +150,7 @@ public class Order {
                result = 31 * result + (fidelitycarddiscount != null ? fidelitycarddiscount.hashCode() : 0);
                result = 31 * result + quantity;
                result = 31 * result + waiter_id;
+               result = 31 * result + table_id;
              
                
                return result;

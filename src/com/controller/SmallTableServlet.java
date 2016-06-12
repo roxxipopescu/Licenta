@@ -49,14 +49,15 @@ public class SmallTableServlet extends HttpServlet {
 	            String fidelitycarddiscount=request.getParameter("fidelitycarddiscount");
 	            
 	            int currUserId=Integer.parseInt(request.getParameter("idUser"));
-	            	            	     	           	            
-	            Order newOrder = new Order( Integer.parseInt(quantity), dish, specifications, fidelitycarddiscount, currUserId);
+	            int myTable=Integer.parseInt(request.getParameter("idTable"));
+	            
+	            Order newOrder = new Order( Integer.parseInt(quantity), dish, specifications, fidelitycarddiscount, currUserId, myTable);
 	            OrderDao oDao = new OrderDao(new Configuration().configure().buildSessionFactory());
 	            oDao.addOrder(newOrder);
 
-	            //request.getRequestDispatcher("Table.jsp").forward(request, response);
+	            request.getRequestDispatcher("Table.jsp").forward(request, response);
 	           
-	            response.sendRedirect("Table.jsp"); 
+	            //response.sendRedirect("Table.jsp"); 
 		 }
 		 else  if (request.getParameter("delete_order")!=null)
 		 {
@@ -65,7 +66,8 @@ public class SmallTableServlet extends HttpServlet {
 	            oDao.removeOrder(Integer.parseInt(idToDelete));
 	            PrintWriter out = response.getWriter();
 	            
-	            response.sendRedirect("Table.jsp");			 
+	            request.getRequestDispatcher("Table.jsp").forward(request, response);
+	            //response.sendRedirect("Table.jsp");			 
 		 }
 		 else  if (request.getParameter("update_order")!=null)
 		 {
@@ -103,15 +105,20 @@ public class SmallTableServlet extends HttpServlet {
 			 
 			 
 			 for (Order myorder : myList) {
+				 if (myorder.getTableId()==Integer.parseInt(tablenr))
+			   {
 				 if (myList.indexOf(myorder) == myList.size()-1){
 					 orderedDishes = orderedDishes.concat(myorder.getDish()).concat(".");
 				 }
 				 else 
 					 orderedDishes = orderedDishes.concat(myorder.getDish()).concat(", ");
+			   }
 			 }
 			 
 			 for (Menu mymenu : menuList) {
 				 for (Order myorder : myList) {
+					 if (myorder.getTableId()==Integer.parseInt(tablenr)) 
+				  {
 					 if (myorder.getDish().equals(mymenu.getDish()))
 					 {						 
 						 price = mymenu.getDishPrice();
@@ -127,7 +134,8 @@ public class SmallTableServlet extends HttpServlet {
 						 orderTotalCost+=price * myorder.getQuantity();
 						 }
 					 }
-				 }					
+				   }
+				 }
 			  }
 						
 			int currentUserId=Integer.parseInt(request.getParameter("idUser"));
@@ -137,11 +145,15 @@ public class SmallTableServlet extends HttpServlet {
 	          
 	        for (Order myorder : myList)
 	        {
-	        	OrderDao odao = new OrderDao(new Configuration().configure().buildSessionFactory());
-	        	odao.removeOrder(myorder.getId());
+	        	 if (myorder.getTableId()==Integer.parseInt(tablenr))
+	        	 {
+	        		 OrderDao odao = new OrderDao(new Configuration().configure().buildSessionFactory());
+	        		 odao.removeOrder(myorder.getId());
+	        	 }
 	        }
 	        
-	        response.sendRedirect("Table.jsp");			 
+	        request.getRequestDispatcher("Table.jsp").forward(request, response);
+	        //response.sendRedirect("Table.jsp");			 
 		 }
 		 
 		 else if (request.getParameter("place_order")!=null)
@@ -161,6 +173,8 @@ public class SmallTableServlet extends HttpServlet {
 			  
 			  if (!myList.isEmpty()) {
 		            for (Order myorder : myList) {
+		              if (myorder.getTableId()==Integer.parseInt(tablenr))
+		              {
 		            	int wId = myorder.getWaiterId();      
 		            	User myUser = userDao.findUser(wId);
 		            	
@@ -172,16 +186,14 @@ public class SmallTableServlet extends HttpServlet {
 		            	Chef newchef= new Chef(Integer.parseInt(tablenr), uName, qty, dishName, currentTime);
 		            	ChefDao chefDao = new ChefDao(new Configuration().configure().buildSessionFactory());
 		            	chefDao.addChef(newchef);
-		            
+		              }
 		            }
 		            
-		            response.sendRedirect("Table.jsp");			
-		 
-		 
+		            request.getRequestDispatcher("Table.jsp").forward(request, response);
+		            //response.sendRedirect("Table.jsp");			
 		
 			  	}
-		 
-		 
+	 
 		 }
 
 }

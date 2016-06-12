@@ -73,4 +73,12 @@
     <servlet-name>chef_ops</servlet-name>
     <url-pattern>/chef_ops</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <servlet-name>assign_tables</servlet-name>
+    <servlet-class>com.controller.UserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>assign_tables</servlet-name>
+    <url-pattern>/assign_tables</url-pattern>
+  </servlet-mapping>
 </web-app>

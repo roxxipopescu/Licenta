@@ -51,7 +51,8 @@ public class EditOrderServlet extends HttpServlet {
 	            OrderDao oDao = new OrderDao(new Configuration().configure().buildSessionFactory());
 	            oDao.updateOrder(oDao.findOrder(idToUpdate), newOrder);
 
-	            response.sendRedirect("Table.jsp");	
+	            request.getRequestDispatcher("Table.jsp").forward(request, response);
+	            //response.sendRedirect("Table.jsp");	
 	           
 		 }
 	}

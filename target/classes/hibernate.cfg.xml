@@ -21,5 +21,6 @@
       <mapping class="com.model.Income" />
       <mapping class="com.model.Menu" />
       <mapping class="com.model.Chef" />
+      <mapping class="com.model.RestaurantTables" />
   </session-factory>
 </hibernate-configuration>

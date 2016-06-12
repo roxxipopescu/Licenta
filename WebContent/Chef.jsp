@@ -16,8 +16,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <style>
-#center{
-	
+#center{	
 	vertical-align: middle;
 	padding-left:10px;
 }
@@ -96,8 +95,7 @@
 		 <%
         if (!myChefList.isEmpty()) {
             for (Chef mychef : myChefList) {
-            	
-            
+            	           
         %>
 		 <tr>				  
 		  <td><%= mychef.getTableId() %> </td>

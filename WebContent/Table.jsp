@@ -2,6 +2,8 @@
 <%@ page import="com.model.Order" %>
 <%@ page import="com.dao.MenuDao" %>
 <%@ page import="com.model.Menu" %>
+<%@ page import="com.dao.RestaurantTablesDao" %>
+<%@ page import="com.model.RestaurantTables" %>
 <%@ page import="org.hibernate.cfg.Configuration" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.io.PrintWriter" %>
@@ -46,9 +48,10 @@
       if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
     }
   }
-%>
 
-<%
+  RestaurantTables t = (RestaurantTables)request.getSession().getAttribute("tableToBeServed");
+  
+  
   int currentUserId = (int) session.getAttribute("id");
   OrderDao orderDao = new OrderDao(new Configuration().configure().buildSessionFactory());
   List<Order> myList = null;
@@ -59,13 +62,16 @@
   List<Menu> myMenuList = null;
   myMenuList = menuDao.findMenuItems();
   Menu m = myMenuList.get(0);
+  RestaurantTablesDao rtDao = new RestaurantTablesDao(new Configuration().configure().buildSessionFactory());
+  List<RestaurantTables> myrtList = null;
+  myrtList = rtDao.findRestaurantTables();
   
-  String tablenb = request.getParameter("tablenb");
+  
   
   %>
  
 
-<h2 align="center" >Table no. <%=tablenb %> </h2>
+<h2 align="center" >Table no. <%=t.getId() %> </h2>
 
 <div class="row">
 <div class="col-md-12 ">
@@ -100,6 +106,7 @@
 <input type="number" min="0" max="100" step="1" id="nb"  name="fidelitycarddiscount" value="0" /> %
 <br/><br/>
 <input type="hidden" name="idUser" value="<%=currentUserId %>" />
+<input type="hidden" name="idTable" value="<%=t.getId() %>" />
 <input type="submit"  class="btn btn-primary" name="add_order" id="add" value="Add">
 </div>
 </form>
@@ -110,7 +117,7 @@
 <div class="col-md-12 ">
 <div class="col-md-6 text-left">
 <input type="hidden" name="idUser" value="<%=currentUserId %>" />
-<input type="hidden" name="idTable" value="<%=tablenb%>">
+<input type="hidden" name="idTable" value="<%=t.getId() %>">
   <input type="submit" value="Close Order" class="btn btn-danger" name="close_order" onclick="return confirm('Are you sure you want to close current order?');">  
 </div>
 <div class="col-md-6 text-right">
@@ -138,6 +145,8 @@
         <%
         if (!myList.isEmpty()) {
             for (Order myorder : myList) {
+            	if (myorder.getTableId()==t.getId())
+            	{
         %>
          <TR>
          <TD> <%= myorder.getQuantity()%>  </TD>
@@ -156,7 +165,7 @@
                 </form>
         </td>
         </tr>
-         <%
+         <%}
             }
         }
         %>
