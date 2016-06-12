@@ -49,12 +49,13 @@ public class SmallTableServlet extends HttpServlet {
 	            String fidelitycarddiscount=request.getParameter("fidelitycarddiscount");
 	            
 	            int currUserId=Integer.parseInt(request.getParameter("idUser"));
-	            
-	            	     	           	            
+	            	            	     	           	            
 	            Order newOrder = new Order( Integer.parseInt(quantity), dish, specifications, fidelitycarddiscount, currUserId);
 	            OrderDao oDao = new OrderDao(new Configuration().configure().buildSessionFactory());
 	            oDao.addOrder(newOrder);
 
+	            //request.getRequestDispatcher("Table.jsp").forward(request, response);
+	           
 	            response.sendRedirect("Table.jsp"); 
 		 }
 		 else  if (request.getParameter("delete_order")!=null)
@@ -98,6 +99,7 @@ public class SmallTableServlet extends HttpServlet {
 			 String fidelitycarddiscount;
 			 double discount=0;
 			 String orderedDishes="";
+			 String tablenr = request.getParameter("idTable");
 			 
 			 
 			 for (Order myorder : myList) {
@@ -129,7 +131,7 @@ public class SmallTableServlet extends HttpServlet {
 			  }
 						
 			int currentUserId=Integer.parseInt(request.getParameter("idUser"));
-		    Income newIncome = new Income( currentUserId, currentDate ,orderTotalCost, orderedDishes);
+		    Income newIncome = new Income( currentUserId, currentDate ,orderTotalCost, orderedDishes, Integer.parseInt(tablenr));
 	        IncomeDao iDao = new IncomeDao(new Configuration().configure().buildSessionFactory());
 	        iDao.addIncome(newIncome);
 	          
@@ -154,7 +156,7 @@ public class SmallTableServlet extends HttpServlet {
 			  myuList = userDao.findUsers();
 			  User u = myuList.get(0);
 			  
-			  int tableId=1;
+			  String tablenr = request.getParameter("idTable");
 			  String currentTime = new SimpleDateFormat("HH:mm:ss").format(new Date());
 			  
 			  if (!myList.isEmpty()) {
@@ -167,7 +169,7 @@ public class SmallTableServlet extends HttpServlet {
 		            	String dishName = myorder.getDish();
 		            	
 			
-		            	Chef newchef= new Chef(tableId, uName, qty, dishName, currentTime);
+		            	Chef newchef= new Chef(Integer.parseInt(tablenr), uName, qty, dishName, currentTime);
 		            	ChefDao chefDao = new ChefDao(new Configuration().configure().buildSessionFactory());
 		            	chefDao.addChef(newchef);
 		            

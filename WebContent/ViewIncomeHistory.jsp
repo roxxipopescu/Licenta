@@ -38,8 +38,9 @@
   IncomeDao incomeDao = new IncomeDao(new Configuration().configure().buildSessionFactory());
   List<Income> myList = null;
   myList = incomeDao.findIncomes();
+  if(!myList.isEmpty()){
   Income i = myList.get(0);
-  
+  }
 %>
 
 
@@ -64,6 +65,7 @@
         <thead>
         <tr>
         <th>Date</th>
+        <th>Table no.</th>
         <th>Dishes</th>        
         <th>Check value</th>
         <th style="text-align:center">Actions</th>
@@ -76,6 +78,7 @@
         %>
         <tr>
         <td><%=myincome.getDate() %></td>       
+        <td><%=myincome.getTableId() %></td>
         <td><%=myincome.getOrderedDishes() %></td> 
         <td><%=myincome.getOrderTotalCost() %> $</td>
         <td style="text-align:center">        	            		  

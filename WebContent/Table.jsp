@@ -110,6 +110,7 @@
 <div class="col-md-12 ">
 <div class="col-md-6 text-left">
 <input type="hidden" name="idUser" value="<%=currentUserId %>" />
+<input type="hidden" name="idTable" value="<%=tablenb%>">
   <input type="submit" value="Close Order" class="btn btn-danger" name="close_order" onclick="return confirm('Are you sure you want to close current order?');">  
 </div>
 <div class="col-md-6 text-right">
