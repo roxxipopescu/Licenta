@@ -15,9 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.hibernate.cfg.Configuration;
 
 import com.dao.OrderDao;
+import com.dao.UserDao;
 import com.model.Order;
+import com.model.User;
+import com.dao.ChefDao;
 import com.dao.IncomeDao;
 import com.dao.MenuDao;
+import com.model.Chef;
 import com.model.Income;
 import com.model.Menu;
 
@@ -89,9 +93,13 @@ public class SmallTableServlet extends HttpServlet {
 			 menuList = menuDao.findMenuItems();
 			 Menu m = menuList.get(0);
 			 
-			 int orderTotalCost=0;
+			 double orderTotalCost=0;
 			 int price=0;
+			 String fidelitycarddiscount;
+			 double discount=0;
 			 String orderedDishes="";
+			 
+			 
 			 for (Order myorder : myList) {
 				 if (myList.indexOf(myorder) == myList.size()-1){
 					 orderedDishes = orderedDishes.concat(myorder.getDish()).concat(".");
@@ -105,7 +113,17 @@ public class SmallTableServlet extends HttpServlet {
 					 if (myorder.getDish().equals(mymenu.getDish()))
 					 {						 
 						 price = mymenu.getDishPrice();
+						 fidelitycarddiscount= myorder.getFidelityCardDiscount();
+						 double fcd = (double) Integer.parseInt(fidelitycarddiscount);
+						 discount =(double) fcd/100;
+						 
+						 if(discount!=0){
+							double reducedPrice = price - price*discount; 
+							orderTotalCost+= reducedPrice * myorder.getQuantity();
+						 }
+						 else{
 						 orderTotalCost+=price * myorder.getQuantity();
+						 }
 					 }
 				 }					
 			  }
@@ -115,18 +133,54 @@ public class SmallTableServlet extends HttpServlet {
 	        IncomeDao iDao = new IncomeDao(new Configuration().configure().buildSessionFactory());
 	        iDao.addIncome(newIncome);
 	          
-	        
+	        for (Order myorder : myList)
+	        {
+	        	OrderDao odao = new OrderDao(new Configuration().configure().buildSessionFactory());
+	        	odao.removeOrder(myorder.getId());
+	        }
 	        
 	        response.sendRedirect("Table.jsp");			 
 		 }
 		 
 		 else if (request.getParameter("place_order")!=null)
 		 {
-			 //SELFIE PULA
-		 }
+			 OrderDao orderDao = new OrderDao(new Configuration().configure().buildSessionFactory());
+			 List<Order> myList = null;
+			 myList = orderDao.findOrders();
+			 Order a = myList.get(0);
+			 
+			 UserDao userDao = new UserDao(new Configuration().configure().buildSessionFactory());
+			  List<User> myuList = null;
+			  myuList = userDao.findUsers();
+			  User u = myuList.get(0);
+			  
+			  int tableId=1;
+			  String currentTime = new SimpleDateFormat("HH:mm").format(new Date());
+			  
+			  if (!myList.isEmpty()) {
+		            for (Order myorder : myList) {
+		            	int wId = myorder.getWaiterId();      
+		            	User myUser = userDao.findUser(wId);
+		            	
+		            	String uName = myUser.getFirstName();
+		            	int qty = myorder.getQuantity();
+		            	String dishName = myorder.getDish();
+		            	
+			
+		            	Chef newchef= new Chef(tableId, uName, qty, dishName, currentTime);
+		            	ChefDao chefDao = new ChefDao(new Configuration().configure().buildSessionFactory());
+		            	chefDao.addChef(newchef);
+		            
+		            }
+		            
+		            response.sendRedirect("Table.jsp");			
 		 
 		 
 		
-	}
+			  	}
+		 
+		 
+		 }
 
+}
 }

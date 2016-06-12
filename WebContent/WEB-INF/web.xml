@@ -65,4 +65,12 @@
     <servlet-name>crud_history</servlet-name>
     <url-pattern>/crud_history</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>chef_ops</servlet-name>
+    <servlet-class>com.controller.ChefPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>chef_ops</servlet-name>
+    <url-pattern>/chef_ops</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -53,7 +53,8 @@
   OrderDao orderDao = new OrderDao(new Configuration().configure().buildSessionFactory());
   List<Order> myList = null;
   myList = orderDao.findOrders();
-  Order a = myList.get(0);
+  if (!myList.isEmpty()){
+  Order a = myList.get(0);}
   MenuDao menuDao = new MenuDao(new Configuration().configure().buildSessionFactory());
   List<Menu> myMenuList = null;
   myMenuList = menuDao.findMenuItems();
@@ -67,10 +68,10 @@
 <div class="row">
 <div class="col-md-12 ">
 <div class="col-md-6 text-left">
- <input type="submit" class="btn btn-primary" value="Back" id="back" onclick="location.href = 'http://localhost:8080/RestaurantManager/User.jsp'; " >
+   <input type="submit" value="Reserve this table" class="btn btn-primary" onclick="">  
    </div>
    <div class="col-md-6 text-right">
-    <input type="submit" value="Reserve this table" class="btn btn-primary" onclick="">  
+    <input type="submit" class="btn btn-primary" value="Back" id="back" onclick="location.href = 'http://localhost:8080/RestaurantManager/User.jsp'; " >
   </div>
   </div>
   </div>
@@ -132,6 +133,7 @@
 		 </thead>
         <tbody>
         <%
+        if (!myList.isEmpty()) {
             for (Order myorder : myList) {
         %>
          <TR>
@@ -153,6 +155,7 @@
         </tr>
          <%
             }
+        }
         %>
         </tbody>
          </table>

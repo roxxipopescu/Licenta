@@ -1,16 +1,37 @@
+<%@ page import="com.dao.OrderDao" %>
+<%@ page import="com.model.Order" %>
+<%@ page import="com.model.Chef" %>
+<%@ page import="com.dao.ChefDao" %>
+<%@ page import="com.dao.UserDao" %>
+<%@ page import="com.model.User" %>
+<%@ page import="org.hibernate.cfg.Configuration" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.io.PrintWriter" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<style>
+#center{
+	
+	vertical-align: middle;
+	padding-left:10px;
+}
+#nb{
+	text-align: center;
+}
+</style>
 <title>Chef Page</title>
 	<link rel="stylesheet" href="bootstrap.min.css">
     <script src="bootstrap.min.js"></script>
     <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' >
    <link rel="stylesheet" type="text/css" href="/RestaurantManager/smallTable.css">
 </head>
-<body background="Untitled.png">
+<body background="bkg.jpg">
 <%
   String user = null;
   if(session.getAttribute("user") == null){
@@ -25,214 +46,88 @@
       if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
     }
   }
+  
+  
+  ChefDao chefDao = new ChefDao(new Configuration().configure().buildSessionFactory());
+  List<Chef> myChefList = null;
+  myChefList = chefDao.findChefs();
+  if (!myChefList.isEmpty()){
+  Chef c = myChefList.get(0);}
+  
+  
 %>
 <div class="span7 text-center">
 <h3>Welcome <%=userName %> to your chef page.</h3>
 </div>
-<div class="span7 text-right">
+<div class="row">
+<div class="col-md-12">
+<div class="col-md-1 text-left">   
+      
+</div>
+
+<div class="col-md-11 text-right">
  <form action="LogoutServlet" method="post">
     <input type="submit" value="Logout" class="btn btn-danger ">
   </form>
 </div>
+ 
+</div>
+</div>
+
 <br/><br/><br/><br/>
-
 <div class="row">
-<div class="col-md-4 text-center">
-<div class="seat">
-<form method = "post" action="SeatServlet"> 
-<input type="image"  src="seat.png" alt="Submit">
-</form>
+<div class="col-md-12">
+<div class="col-md-2">
 </div>
-
-<div class="smalltable">
-<form method = "post" action="SmallTableServlet"> 
-<input type="image" id="1" src="smallT.png" alt="Submit">
-</form>
-</div>
-
-<div class="seat">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat2.png" alt="Submit">
-</form>
-</div>
-</div>
-
-<div class="col-md-4 text-center">
-<div class="seat">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat.png" alt="Submit">
-</form>
-</div>
-
-<div class="row">
-
-<div class="col-md-4 text-right ">
-<div class="seat3">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat3.png" alt="Submit">
-</form>
-</div>
-</div>
-<div class="col-md-4 text-center">
-<div class="smallt">
-<form method = "post" action="SmallTableServlet"> 
-<input type="image" name="2" src="smallT.png" alt="Submit">
-</form>
-</div>
-</div>
-<div class="col-md-4 ">
-<div class="seat4">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat4.png" alt="Submit">
-</form>
-</div>
-</div>
-
-</div>
-
-<div class="seat">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat2.png" alt="Submit">
-</form>
-</div>
-</div>
-
-<div class="col-md-4 text-center">
-<div class="seat">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat.png" alt="Submit">
-</form>
-</div>
-
-<div class="smalltable">
-<form method = "post" action="SmallTableServlet"> 
-<input type="image" name="3" src="smallT.png" alt="Submit">
-</form>
-</div>
-
-<div class="seat">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat2.png" alt="Submit">
-</form>
-</div>
-</div>
-
-</div>
-
-<br/><br/><br/>
-
-<div class="row">
-<div class="col-md-6 text-center">
-
-<div class="row">
-<div class="col-md-4 text-center">
-<div class="seatBigLeft">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat.png" alt="Submit">
-</form>
-</div>
-</div>
-
-<div class="col-md-4 text-center">
-<div class="seat">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat.png" alt="Submit">
-</form>
-</div>
-</div>
-
-<div class="col-md-4 text-center">
-<div class="seatBigRight">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat.png" alt="Submit">
-</form>
+<div class="col-md-8">
+  <table class="table" border="3">
+        <thead>
+        <tr>        
+        <th>Table id</th>
+        <th>Waiter name</th>
+        <th>Quantity</th>  
+        <th>Dish</th>      
+        <th>Order placement time</th>
+        <th>Preparation time</th>
+        <th>Actions</th>
+        </tr>
+		 </thead>
+		 <tbody>
+		 <%
+        if (!myChefList.isEmpty()) {
+            for (Chef mychef : myChefList) {
+            	
+            
+        %>
+		 <tr>				  
+		  <td><%= mychef.getTableId() %> </td>
+		  <td><%= mychef.getWaiterName() %></td>
+		  <td><%= mychef.getQuantity() %></td>
+		  <td><%= mychef.getDish() %></td>		  
+		  <td><%= mychef.getTime() %></td>
+		  <td class="center"><input type="number" min="0" max="100" step="1" id="nb"  name="prepTime" value="1" /> min(s)</td>
+		  <td>
+		  <form method="post" action="chef_ops">
+                    <input type="hidden" name="id" value="<%= mychef.getId() %>" />
+                    <input type="submit" class="btn btn-link" name="send_timer" value="Send timer">
+                </form>
+                
+          <form method="post" action="chef_ops">
+                    <input type="hidden" name="id" value="<%= mychef.getId() %>" />
+                    <input type="submit" class="btn btn-link" name="delete" value="Order served" onclick="return confirm('This order has been delivered!');">
+                </form>
+		  </td>
+		  </tr>
+		  <%
+            }
+        }
+		  %>
+		 </tbody>
+		 
+  </table>
 </div>
 </div>
 </div>
-
-<div class="bigtable">
-<form method = "post" action="SmallTableServlet"> 
-<input type="image" name="4" src="bigTable.png" alt="Submit">
-</form>
-</div>
-
-<div class="row">
-<div class="col-md-4 text-center">
-<div class="seatBigLeft">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat2.png" alt="Submit">
-</form>
-</div>
-</div>
-
-<div class="col-md-4 text-center">
-<div class="seat">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat2.png" alt="Submit">
-</form>
-</div>
-</div>
-
-<div class="col-md-4 text-center">
-<div class="seatBigRight">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat2.png" alt="Submit">
-</form>
-</div>
-</div>
-</div>
-
-
-</div>
-
-
-<div class="col-md-6 text-center">
-
-<div class="seat">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat.png" alt="Submit">
-</form>
-</div>
-
-<div class="row">
-
-<div class="col-md-4 text-right ">
-<div class="seat3d">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat3.png" alt="Submit">
-</form>
-</div>
-</div>
-<div class="col-md-4 text-center">
-<div class="smallt">
-<form method = "post" action="SmallTableServlet"> 
-<input type="image" name="5" src="smallT.png" alt="Submit">
-</form>
-</div>
-</div>
-<div class="col-md-4 ">
-<div class="seat4d">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat4.png" alt="Submit">
-</form>
-</div>
-</div>
-
-</div>
-
-<div class="seat">
-<form method = "post" action="SeatServlet"> 
-<input type="image" src="seat2.png" alt="Submit">
-</form>
-</div>
-</div>
-
-
-
-
-
-</div>
-
 <br/><br/>
 
 </body>

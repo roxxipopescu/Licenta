@@ -20,5 +20,6 @@
       <mapping class="com.model.Order" />
       <mapping class="com.model.Income" />
       <mapping class="com.model.Menu" />
+      <mapping class="com.model.Chef" />
   </session-factory>
 </hibernate-configuration>

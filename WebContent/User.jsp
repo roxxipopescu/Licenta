@@ -29,10 +29,18 @@
 <div class="span7 text-center">
 <h3>Welcome <%=userName %> to your waiter page.</h3>
 </div>
-<div class="span7 text-right">
+<div class="row">
+<div class="col-md-12">
+<div class="col-md-1 text-left">      
+</div>
+
+<div class="col-md-11 text-right">
  <form action="LogoutServlet" method="post">
     <input type="submit" value="Logout" class="btn btn-danger ">
   </form>
+</div>
+ 
+</div>
 </div>
 <br/><br/>
 

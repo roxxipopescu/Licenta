@@ -40,10 +40,6 @@
   myList = incomeDao.findIncomes();
   Income i = myList.get(0);
   
-  OrderDao orderDao = new OrderDao(new Configuration().configure().buildSessionFactory());
-  List<Order> myOrderList = null;
-  myOrderList = orderDao.findOrders();
-  Order o = myOrderList.get(0);
 %>
 
 
@@ -69,14 +65,8 @@
         	{
         %>
         <tr>
-        <td><%=myincome.getDate() %></td>
-        
-        <td>
-        
-        <%=myincome.getOrderedDishes() %> <br/>
-        
-        
-         </td> 
+        <td><%=myincome.getDate() %></td>       
+        <td><%=myincome.getOrderedDishes() %></td> 
         <td><%=myincome.getOrderTotalCost() %> $</td>
         <td style="text-align:center">        	            		  
                 <form method="post" action="crud_history">
@@ -92,9 +82,7 @@
         </tbody>
          </table>
     </div>
-    
-  
-    
+   
     </div>
  
 
