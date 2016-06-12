@@ -15,7 +15,7 @@
     <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' >
     <link href="http://addtocalendar.com/atc/1.5/atc-style-blue.css" rel="stylesheet" type="text/css">
 </head>
-<body background="Untitled.png">
+<body background="bkg.jpg">
 <%
   String user = null;
   if(session.getAttribute("user") == null){
@@ -43,10 +43,19 @@
   List<User> myList = null;
   myList = userDao.findUsers();
   User a = myList.get(0);
+  String adminName="";
+  
+  for(User admin: myList)
+  {
+	  if (admin.getUserName().equals(userName))
+	  {
+		  adminName= admin.getFirstName() +" " + admin.getLastName();
+	  }
+  }
   
   %>
   
-<h3 align="center">Welcome to the administrator page!</h3>
+<h3 align="center">Welcome <%=adminName %> to the admin page!</h3>
 <div class="row">
 <div class="col-md-12">
 <div class="col-md-1 text-left">   

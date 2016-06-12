@@ -47,6 +47,16 @@
 <br/>	<br/><br/>
 
 <div class="row">
+<div class="col-md-12 ">
+<div class="col-md-6 text-left">
+   </div>
+   <div class="col-md-6 text-right">
+    <input type="submit" class="btn btn-primary" value="Back" id="back" onclick="location.href = 'http://localhost:8080/RestaurantManager/Admin.jsp'; " >
+  </div>
+  </div>
+  </div>
+
+<div class="row">
 <div class="col-md-3">
 </div>
  <div class="col-md-6"  align="center">
@@ -88,12 +98,6 @@
 
 <br/><br/><br/>
    
-   <div class="row">
-   <div class="col-md-12 text-center">
-   <input type="submit" class="btn btn-default" value="Back" onclick="location.href = 'http://localhost:8080/RestaurantManager/Admin.jsp'; " >
-    </div>
-    </div>
-
 
 </body>
 </html>

@@ -155,7 +155,7 @@ public class SmallTableServlet extends HttpServlet {
 			  User u = myuList.get(0);
 			  
 			  int tableId=1;
-			  String currentTime = new SimpleDateFormat("HH:mm").format(new Date());
+			  String currentTime = new SimpleDateFormat("HH:mm:ss").format(new Date());
 			  
 			  if (!myList.isEmpty()) {
 		            for (Order myorder : myList) {

@@ -66,7 +66,10 @@
 </div>
 
 <div class="smalltable">
-<input type="image" id="1" src="smallT.png" alt="Submit" onclick="location.href = 'http://localhost:8080/RestaurantManager/Table.jsp';">
+<form method="post"  action="Table.jsp">
+<input type="hidden" name="tablenb" value="1">
+<input type="image"  src="smallT.png" alt="Submit" >
+</form>
 </div>
 
 <div class="seat">
@@ -88,7 +91,10 @@
 </div>
 <div class="col-md-4 text-center">
 <div class="smallt">
-<input type="image" name="2" src="smallT.png" alt="Submit" onclick="location.href = 'http://localhost:8080/RestaurantManager/Table.jsp';">
+<form method="post" action="Table.jsp">
+<input type="hidden" name="tablenb" value="2">
+<input type="image"  src="smallT.png" alt="Submit" >
+</form>
 </div>
 </div>
 <div class="col-md-4 ">
@@ -111,7 +117,10 @@
 </div>
 
 <div class="smalltable">
-<input type="image" name="3" src="smallT.png" alt="Submit" onclick="location.href = 'http://localhost:8080/RestaurantManager/Table.jsp';">
+<form method="post" action="Table.jsp">
+<input type="hidden" name="tablenb" value="3">
+<input type="image"  src="smallT.png" alt="Submit">
+</form>
 </div>
 
 <div class="seat">
@@ -147,7 +156,10 @@
 </div>
 
 <div class="bigtable">
-<input type="image" name="4" src="bigTable.png" alt="Submit" onclick="location.href = 'http://localhost:8080/RestaurantManager/Table.jsp';">
+<form method="post" action="Table.jsp">
+<input type="hidden" name="tablenb" value="4">
+<input type="image"  src="bigTable.png" alt="Submit" >
+</form>
 </div>
 
 <div class="row">
@@ -189,7 +201,10 @@
 </div>
 <div class="col-md-4 text-center">
 <div class="smallt">
-<input type="image" name="5" src="smallT.png" alt="Submit" onclick="location.href = 'http://localhost:8080/RestaurantManager/Table.jsp';">
+<form method="post" action="Table.jsp">
+<input type="hidden" name="tablenb" value="5">
+<input type="image"  src="smallT.png" alt="Submit">
+</form>
 </div>
 </div>
 <div class="col-md-4 ">

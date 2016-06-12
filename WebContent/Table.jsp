@@ -60,10 +60,12 @@
   myMenuList = menuDao.findMenuItems();
   Menu m = myMenuList.get(0);
   
+  String tablenb = request.getParameter("tablenb");
+  
   %>
  
 
-<h2 align="center" >Table no. 1 </h2>
+<h2 align="center" >Table no. <%=tablenb %> </h2>
 
 <div class="row">
 <div class="col-md-12 ">
