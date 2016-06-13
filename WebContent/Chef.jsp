@@ -28,7 +28,7 @@
 	<link rel="stylesheet" href="bootstrap.min.css">
     <script src="bootstrap.min.js"></script>   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <script src="timer.js"></script>
+    
     <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' >
    <link rel="stylesheet" type="text/css" href="/RestaurantManager/smallTable.css">
 </head>
@@ -85,7 +85,7 @@
 </div>
 
 <br/><br/>
-<div> Timer: <span id="time">05:00</span> minutes</div>
+
 <br/><br/>
 <div class="row">
 <div class="col-md-12">
@@ -94,7 +94,8 @@
 <div class="col-md-8">
   <table class="table" border="3">
         <thead>
-        <tr>        
+        <tr>    
+        <th>Timer</th>    
         <th>Table id</th>
         <th>Waiter name</th>
         <th>Quantity</th>  
@@ -110,19 +111,16 @@
             for (Chef mychef : myChefList) {
             	           
         %>
-		 <tr>				  
+		 <tr>			
+		 <td><span id="countdown">c</span> <br/> <span id="notifier">minutes</span></td>	  
 		  <td><%= mychef.getTableId() %> </td>
 		  <td><%= mychef.getWaiterName() %></td>
 		  <td><%= mychef.getQuantity() %></td>
 		  <td><%= mychef.getDish() %></td>		  
 		  <td><%= mychef.getTime() %></td>
 		  <td class="center"><input type="number" min="0" max="100" step="1" id="nb"  name="prepTime" value="1" /> min(s)</td>
-		  <td>
-		  
-                    <input type="submit" class="btn btn-link" id="send_timer" onClick="startTimer()" value="Send timer">
-               
-                
-          <form method="post" action="chef_ops">
+		  <td><div class="btn btn-link" id="send_timer" >Start timer</div>
+              <form method="post" action="chef_ops">
                     <input type="hidden" name="id" value="<%= mychef.getId() %>" />
                     <input type="hidden" name="chefUserId" value="<%= myChefId %>" />
                     <input type="submit" class="btn btn-link" name="delete" value="Order served" onclick="return confirm('This order has been delivered!');">
@@ -140,9 +138,6 @@
 </div>
 </div>
 <br/><br/>
-<script>
-
-
-</script>
+<script src="timer.js"></script>
 </body>
 </html>
