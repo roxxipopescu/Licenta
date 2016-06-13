@@ -55,9 +55,16 @@ public class EmployerServlet extends HttpServlet {
 			String idToViewIncome = request.getParameter("id");
             UserDao uDao = new UserDao(new Configuration().configure().buildSessionFactory());
             User a = uDao.findUser(Integer.parseInt(idToViewIncome));
-            request.getSession().setAttribute("idToView", Integer.parseInt(idToViewIncome));
-            request.getSession().setAttribute("toViewIncome", a);	
-			 request.getRequestDispatcher("ViewIncomeHistory.jsp").forward(request,response);
+            if (a.getRole().equals("admin"))
+            {
+            	request.getRequestDispatcher("ViewTotalIncome.jsp").forward(request,response);
+            }
+            else 
+            {
+            	request.getSession().setAttribute("idToView", Integer.parseInt(idToViewIncome));
+            	request.getSession().setAttribute("toViewIncome", a);	
+            	request.getRequestDispatcher("ViewIncomeHistory.jsp").forward(request,response);
+            }
 		 }
 		 else  if (request.getParameter("update_employer")!=null)
 		 {

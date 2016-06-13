@@ -77,11 +77,11 @@
 <div class="col-md-7 text-right">    
 <span class="addtocalendar btn-link"  data-calendars="Google Calendar">
         <var class="atc_event">
-            <var class="atc_date_start">2016-01-11 20:00:00</var>
-            <var class="atc_date_end">2016-01-11 22:00:00</var>
+            <var class="atc_date_start">2016-07-08 20:00:00</var>
+            <var class="atc_date_end">2016-07-08 23:00:00</var>
             <var class="atc_timezone">Europe/Bucharest</var>
             <var class="atc_title">Jazz Concert</var>
-            <var class="atc_description">Carla Redak</var>
+            <var class="atc_description">Pink Martini band</var>
             <var class="atc_location">Sneakers'n'Burgers</var>
             <var class="atc_organizer">Roxana Popescu</var>
             <var class="atc_organizer_email">roxxi.popescu@gmail.com</var>

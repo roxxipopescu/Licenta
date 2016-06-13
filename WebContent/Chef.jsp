@@ -26,7 +26,9 @@
 </style>
 <title>Chef Page</title>
 	<link rel="stylesheet" href="bootstrap.min.css">
-    <script src="bootstrap.min.js"></script>
+    <script src="bootstrap.min.js"></script>   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="timer.js"></script>
     <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' >
    <link rel="stylesheet" type="text/css" href="/RestaurantManager/smallTable.css">
 </head>
@@ -46,6 +48,15 @@
     }
   }
   
+  UserDao userDao = new UserDao(new Configuration().configure().buildSessionFactory());
+  List<User> myList = null;
+  myList = userDao.findUsers();
+  int myChefId=0;
+  
+  for (User currentUser : myList){
+	  if (currentUser.getUserName().equals(userName))
+		  myChefId = currentUser.getId();
+  }
   
   ChefDao chefDao = new ChefDao(new Configuration().configure().buildSessionFactory());
   List<Chef> myChefList = null;
@@ -73,7 +84,9 @@
 </div>
 </div>
 
-<br/><br/><br/><br/>
+<br/><br/>
+<div> Timer: <span id="time">05:00</span> minutes</div>
+<br/><br/>
 <div class="row">
 <div class="col-md-12">
 <div class="col-md-2">
@@ -105,13 +118,13 @@
 		  <td><%= mychef.getTime() %></td>
 		  <td class="center"><input type="number" min="0" max="100" step="1" id="nb"  name="prepTime" value="1" /> min(s)</td>
 		  <td>
-		  <form method="post" action="chef_ops">
-                    <input type="hidden" name="id" value="<%= mychef.getId() %>" />
-                    <input type="submit" class="btn btn-link" name="send_timer" value="Send timer">
-                </form>
+		  
+                    <input type="submit" class="btn btn-link" id="send_timer" onClick="startTimer()" value="Send timer">
+               
                 
           <form method="post" action="chef_ops">
                     <input type="hidden" name="id" value="<%= mychef.getId() %>" />
+                    <input type="hidden" name="chefUserId" value="<%= myChefId %>" />
                     <input type="submit" class="btn btn-link" name="delete" value="Order served" onclick="return confirm('This order has been delivered!');">
                 </form>
 		  </td>
@@ -127,6 +140,9 @@
 </div>
 </div>
 <br/><br/>
+<script>
 
+
+</script>
 </body>
 </html>

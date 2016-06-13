@@ -39,9 +39,13 @@
 <div class="span7 text-center">
 <h3>Welcome <%=userName %> to your waiter page.</h3>
 </div>
+<br/><br/>
 <div class="row">
 <div class="col-md-12">
-<div class="col-md-1 text-left">      
+<div class="col-md-1 text-right">   
+   <form action="FidelityServlet" method="post">
+    <input type="submit" value="Fidelity Card Owners" class="btn btn-primary ">
+  </form>
 </div>
 
 <div class="col-md-11 text-right">
@@ -52,22 +56,8 @@
  
 </div>
 </div>
+
 <br/><br/>
-
-
-<div class="row">
- <div class="col-md-6 text-center">
- <form action="FidelityServlet" method="post">
-    <input type="submit" value="Fidelity Card Owners" class="btn btn-info ">
-  </form>
-  </div>
-  
-  <div class="col-md-6 text-center">
-   <form action="CalorieServlet" method="post">
-    <input type="submit" value="Calorie calculator" class="btn btn-info ">
-  </form>
-</div>
-</div>
 <br/><br/>
 
 <div class="row">
