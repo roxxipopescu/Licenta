@@ -1,0 +1,53 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+body {
+
+    font: 400 0.875rem/1.5 "Open Sans", sans-serif;
+    font-size: 140%;
+	
+}
+
+#da {
+	margin-left:20px;
+}
+
+fidelitycardowners
+
+#namef{
+margin-right:60px;
+}
+#surnamef{
+margin-right:50px;
+}
+#bdayf{
+margin-right:47px;
+}
+#bdf{
+margin-right:10px;
+text-align:center;
+}
+#emailf{
+margin-right:30px;
+}
+#email2{
+margin-right:8px;
+}
+#buttf{
+margin-left:37px;
+margin-top:65px;
+}
+
+table
+
+#backt{
+	width:150px;
+}
+#addt{
+	width:170px;
+}
+#qtyt{
+	width:48px;
+}
+#nbt{
+    width:40px;
+} 

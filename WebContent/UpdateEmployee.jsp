@@ -9,17 +9,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<style>
-input {
-text-align: center;
-}
-</style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Edit order</title>
-	<link rel="stylesheet" href="bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/RestaurantManager/font.css">
-    <script src="bootstrap.min.js"></script>
-    <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' >   
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/font.css">
+    <link rel='shortcut icon' href='favicon/favicon.ico' type='image/x-icon' >   
 </head>
 <body background="bkg.jpg">
 <br/>
@@ -45,17 +39,17 @@ text-align: center;
   User a = (User)request.getSession().getAttribute("toBeUpdated");
   
   if (a.getRole().equals("waiter"))
-	  {imaj="waiter.png";
+	  {imaj="images/waiter.png";
 	  height=200;
 	  width=180;
 	  }
   else if (a.getRole().equals("chef"))
-	  {imaj="cheficon.png";
+	  {imaj="images/cheficon.png";
 	  height=200;
 	  width=180;
 	  }
   else if (a.getRole().equals("admin"))
-	  {imaj="ceo.png";
+	  {imaj="images/ceo.png";
 	  height=200;
 	  width=180;
 	  }
@@ -86,25 +80,23 @@ text-align: center;
  <div class="col-md-12">
 <div class="col-md-6 text-center">
 <h4>Name:</h4>
-<input type="text" name="name" size="17" value="<%=a.getFirstName() %>">
+<input type="text" style="text-align:center;" name="name" size="17" value="<%=a.getFirstName() %>">
 <h4>Surame:</h4>
-<input type="text" name="surname" size="17" value="<%=a.getLastName() %>">
+<input type="text" style="text-align:center;" name="surname" size="17" value="<%=a.getLastName() %>">
 <h4>Role:</h4>
-<select name="role" id="dropd" >
+<select name="role" id="dropd" style="width: 143px; height: 26px;"  >
 <%
 	for (int i=0; i<3; i++)
 	{ 
 		if (a.getRole().equals(roles.get(i)))
-			{
-	
+			{	
 %>
 		<option selected><%=a.getRole() %></option>	
 		<%}
 		else {
 		%>	
 		 <option><%=roles.get(i) %></option>
-		 
-		
+				
 <%
 			}
 	}
@@ -112,17 +104,17 @@ text-align: center;
 </select>
 
 <h4>Birthdate:</h4>
-<input type="date" name="birthdate"  value="<%=a.getBirthdate() %>">
+<input type="date" style="width: 143px; text-align:center;" name="birthdate"  value="<%=a.getBirthdate() %>">
 </div>
 <div class="col-md-6 text-center">
 <h4>Username:</h4>
-<input type="text" name="username" size="17" value="<%=a.getUserName() %>">
+<input type="text" style="text-align:center;" name="username" size="17" value="<%=a.getUserName() %>">
 <h4>Password:</h4>
-<input type="text" name="password" size="17" value="<%=a.getPassword() %>">
+<input type="text" style="text-align:center;" name="password" size="17" value="<%=a.getPassword() %>">
 <h4>Telephone:</h4>
-<input type="text" name="telephone" size="17" value="<%=a.getTelephone() %>">
+<input type="text" style="text-align:center;" name="telephone" size="17" value="<%=a.getTelephone() %>">
 <h4>Contract Number:</h4>
-<input type="text" name="contractnb" size="17" value="<%=a.getContractnb() %>">
+<input type="text" style="text-align:center;" name="contractnb" size="17" value="<%=a.getContractnb() %>">
 </div>
 </div>
 

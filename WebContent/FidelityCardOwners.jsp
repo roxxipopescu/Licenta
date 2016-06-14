@@ -8,37 +8,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<style>
-#name{
-margin-right:60px;
-}
-#surname{
-margin-right:50px;
-}
-#bday{
-margin-right:47px;
-}
-#bd{
-margin-right:10px;
-text-align:center;
-}
-#email{
-margin-right:30px;
-}
-#email2{
-margin-right:8px;
-}
-#butt{
-margin-left:37px;
-margin-top:65px;
-}
-</style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Fidelity Card Owners</title>
-<link rel="stylesheet" href="bootstrap.min.css">
-    <script src="bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/RestaurantManager/font.css">
-    <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' >
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/font.css">
+    <link rel='shortcut icon' href='favicon/favicon.ico' type='image/x-icon' >
 </head>
 <body background="bkg.jpg">
 
@@ -145,20 +119,20 @@ margin-top:65px;
 <form method="post" action="crud_fclient">  
    <div class = "row">
    <div class="col-md-4 text-right">  
-   <h4 id="name">Name:</h4>
+   <h4 id="namef">Name:</h4>
     <input type="text" name="name" />
-   <h4 id="surname">Surame:</h4>
+   <h4 id="surnamef">Surame:</h4>
     <input type="text" name="surname" />
     </div>
      <div class="col-md-3 text-right ">
-   <h4 id="bday">Birth date:</h4>
-    <input id="bd"  type="date" name="bday" />
-   <h4 id="email">Email address:</h4>
-    <input id="email2" type="email" name="email" /> 
+   <h4 id="bdayf">Birth date:</h4>
+    <input id="bdf"  type="date" name="bday" />
+   <h4 id="emailf">Email address:</h4>
+    <input id="email2f" type="email" name="email" /> 
     </div>
      <div class="col-md-4 text-left">   
     
-    <input type="submit" id="butt" class="btn btn-primary" name="add_fclient" value="Add new member">
+    <input type="submit" id="buttf" class="btn btn-primary" name="add_fclient" value="Add new member">
     </div>
    </div>
 </form>

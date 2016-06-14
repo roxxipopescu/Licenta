@@ -10,10 +10,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Fidelity Card Owners</title>
-<link rel="stylesheet" href="bootstrap.min.css">
-    <script src="bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/RestaurantManager/font.css">
-    <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' >
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/font.css">
+    <link rel='shortcut icon' href='favicon/favicon.ico' type='image/x-icon' >
 </head>
 <body background="bkg.jpg">
 

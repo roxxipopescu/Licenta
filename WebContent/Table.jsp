@@ -12,26 +12,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<style>
-#back{
-	width:150px;
-}
-#add{
-	width:170px;
-}
-#qty{
-	width:48px;
-}
-#nb{
-    width:40px;
-} 
-</style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Table Service</title>
-	<link rel="stylesheet" href="bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/RestaurantManager/font.css">
-    <script src="bootstrap.min.js"></script>
-    <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' >   
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/font.css">
+    <link rel='shortcut icon' href='favicon/favicon.ico' type='image/x-icon' >   
 </head>
 <body background="bkg.jpg">
 <br/>
@@ -87,7 +72,7 @@
    </form>
    </div>
    <div class="col-md-6 text-right">
-    <input type="submit" class="btn btn-primary" value="Back" id="back" onclick="location.href = 'http://localhost:8080/RestaurantManager/User.jsp'; " >
+    <input type="submit" class="btn btn-primary" value="Back" id="backt" onclick="location.href = 'http://localhost:8080/RestaurantManager/User.jsp'; " >
   </div>
   </div>
   </div>
@@ -96,7 +81,7 @@
 <form method="post"  action="crud_order">
 <div class="span7 text-center">
 <h4>Quantity:</h4>
-<input type="number" min="1" max="20" step="1" id="qty"  name="quantity" value="1" />
+<input type="number" min="1" max="20" step="1" id="qtyt"  name="quantity" value="1" />
 <h4>Dish/Beverage:</h4>
 <input list="dishes" name="dishname" type="text" >
 <datalist id="dishes">
@@ -111,11 +96,11 @@
 <h4>Specifications:</h4>
 <input type="text" name="specifications" style="text-align:center;" value="none">
 <h4>Fidelity card discount:</h4>
-<input type="number" min="0" max="100" step="1" id="nb"  name="fidelitycarddiscount" value="0" /> %
+<input type="number" min="0" max="100" step="1" id="nbt"  name="fidelitycarddiscount" value="0" /> %
 <br/><br/>
 <input type="hidden" name="idUser" value="<%=currentUserId %>" />
 <input type="hidden" name="idTable" value="<%=t.getId() %>" />
-<input type="submit"  class="btn btn-primary" name="add_order" id="add" value="Add">
+<input type="submit"  class="btn btn-primary" name="add_order" id="addt" value="Add">
 </div>
 </form>
 <br/><br/>

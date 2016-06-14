@@ -9,13 +9,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Waiter Page</title>
-	<link rel="stylesheet" href="bootstrap.min.css">
-    <script src="bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/RestaurantManager/font.css">
-    <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' >
-   <link rel="stylesheet" type="text/css" href="/RestaurantManager/smallTable.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/font.css">
+    <link rel="stylesheet" type="text/css" href="css/smallTable.css">
+    <link rel='shortcut icon' href='favicon/favicon.ico' type='image/x-icon' > 
 </head>
-<body background="Untitled.png">
+<body background="bkg2.png">
 <%
   String user = null;
   if(session.getAttribute("user") == null){
@@ -65,26 +64,26 @@
 <% if  (myrtList.get(0).getState().equals("free"))
 	{	
 %>
-		<img src="one.png" id="one">
+		<img src="images/one.png" id="one">
 	<%}
    else  if  (myrtList.get(0).getState().equals("reserved")){
 %>
-		<img src="onered.png" id="one">
+		<img src="images/onered.png" id="one">
 	<%}
 %>
 <div class="seat">
-<img  src="seat.png" >
+<img  src="images/seat.png" >
 </div>
 
 <div class="smalltable">
 <form method="post"  action="assign_tables">
 <input type="hidden" name="tablenb" value="<%= myrtList.get(0).getId() %>">
-<input type="image"  src="smallT.png" alt="Submit" >
+<input type="image"  src="images/smallT.png" alt="Submit" >
 </form>
 </div>
 
 <div class="seat">
-<img src="seat2.png" >
+<img src="images/seat2.png" >
 </div>
 </div>
 
@@ -92,35 +91,35 @@
 <% if  (myrtList.get(1).getState().equals("free"))
 	{	
 %>
-		<img src="2.png" id="two">
+		<img src="images/2.png" id="two">
 	<%}
    else  if  (myrtList.get(1).getState().equals("reserved")){
 %>
-		<img src="2red.png" id="two">
+		<img src="images/2red.png" id="two">
 	<%}
 %>
 <div class="seat"> 
-<img src="seat.png" >
+<img src="images/seat.png" >
 </div>
 
 <div class="row">
 
 <div class="col-md-4 text-right ">
 <div class="seat3">
-<img src="seat3.png" >
+<img src="images/seat3.png" >
 </div>
 </div>
 <div class="col-md-4 text-center">
 <div class="smallt">
 <form method="post" action="assign_tables">
 <input type="hidden" name="tablenb" value="<%= myrtList.get(1).getId() %>">
-<input type="image"  src="smallT.png" alt="Submit" >
+<input type="image"  src="images/smallT.png" alt="Submit" >
 </form>
 </div>
 </div>
 <div class="col-md-4 ">
 <div class="seat4">
-<img src="seat4.png" >
+<img src="images/seat4.png" >
 
 </div>
 </div>
@@ -128,7 +127,7 @@
 </div>
 
 <div class="seat">
-<img src="seat2.png" >
+<img src="images/seat2.png" >
 </div>
 </div>
 
@@ -136,26 +135,26 @@
 <% if  (myrtList.get(2).getState().equals("free"))
 	{	
 %>
-		<img src="3.png" id="three">
+		<img src="images/3.png" id="three">
 	<%}
    else  if  (myrtList.get(2).getState().equals("reserved")){
 %>
-		<img src="3red.png" id="three">
+		<img src="images/3red.png" id="three">
 	<%}
 %>
 <div class="seat">
-<img src="seat.png" >
+<img src="images/seat.png" >
 </div>
 
 <div class="smalltable">
 <form method="post" action="assign_tables">
 <input type="hidden" name="tablenb" value="<%= myrtList.get(2).getId() %>">
-<input type="image"  src="smallT.png" alt="Submit">
+<input type="image"  src="images/smallT.png" alt="Submit">
 </form>
 </div>
 
 <div class="seat">
-<img src="seat2.png">
+<img src="images/seat2.png">
 </div>
 </div>
 
@@ -170,7 +169,7 @@
 <div class="col-md-4 text-center">
 
 <div class="seatBigLeft">
-<img src="seat.png">
+<img src="images/seat.png">
 </div>
 </div>
 
@@ -178,21 +177,21 @@
 <% if  (myrtList.get(3).getState().equals("free"))
 	{	
 %>
-		<img src="4.png" id="four" >
+		<img src="images/4.png" id="four" >
 	<%}
    else  if  (myrtList.get(3).getState().equals("reserved")){
 %>
-		<img src="4red.png" id="four">
+		<img src="images/4red.png" id="four">
 	<%}
 %>
 <div class="seat">
-<img src="seat.png" >
+<img src="images/seat.png" >
 </div>
 </div>
 
 <div class="col-md-4 text-center">
 <div class="seatBigRight">
-<img src="seat.png" >
+<img src="images/seat.png" >
 </div>
 </div>
 </div>
@@ -200,26 +199,26 @@
 <div class="bigtable">
 <form method="post" action="assign_tables">
 <input type="hidden" name="tablenb" value="<%= myrtList.get(3).getId() %>">
-<input type="image"  src="bigTable.png" alt="Submit" >
+<input type="image"  src="images/bigTable.png" alt="Submit" >
 </form>
 </div>
 
 <div class="row">
 <div class="col-md-4 text-center">
 <div class="seatBigLeft">
-<img src="seat2.png" >
+<img src="images/seat2.png" >
 </div>
 </div>
 
 <div class="col-md-4 text-center">
 <div class="seat">
-<img src="seat2.png">
+<img src="images/seat2.png">
 </div>
 </div>
 
 <div class="col-md-4 text-center">
 <div class="seatBigRight">
-<img src="seat2.png" >
+<img src="images/seat2.png" >
 </div>
 </div>
 </div>
@@ -232,15 +231,15 @@
 <% if  (myrtList.get(4).getState().equals("free"))
 	{	
 %>
-		<img src="5.png" id="five">
+		<img src="images/5.png" id="five">
 	<%}
    else  if  (myrtList.get(4).getState().equals("reserved")){
 %>
-		<img src="5red.png" id="five">
+		<img src="images/5red.png" id="five">
 	<%}
 %>
 <div class="seat">
-<img src="seat.png" >
+<img src="images/seat.png" >
 </div>
 
 <div class="row">
@@ -248,27 +247,27 @@
 <div class="col-md-4 text-right ">
 
 <div class="seat3d">
-<img src="seat3.png" >
+<img src="images/seat3.png" >
 </div>
 </div>
 <div class="col-md-4 text-center">
 <div class="smallt">
 <form method="post" action="assign_tables">
 <input type="hidden" name="tablenb" value="<%= myrtList.get(4).getId() %>">
-<input type="image"  src="smallT.png" alt="Submit">
+<input type="image"  src="images/smallT.png" alt="Submit">
 </form>
 </div>
 </div>
 <div class="col-md-4 ">
 <div class="seat4d">
-<img src="seat4.png" >
+<img src="images/seat4.png" >
 </div>
 </div>
 
 </div>
 
 <div class="seat">
-<img src="seat2.png">
+<img src="images/seat2.png">
 </div>
 </div>
 

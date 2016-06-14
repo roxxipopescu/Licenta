@@ -13,12 +13,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Email Invitations</title>
-<link rel="stylesheet" href="bootstrap.min.css">
-    <script src="bootstrap.min.js"></script>  
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/font.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-	<script src="jquery.googlecalreader-1.1.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="/RestaurantManager/font.css">
-    <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' >
+	<script src="javascript/jquery.googlecalreader-1.1.min.js"></script>
+    <link rel='shortcut icon' href='favicon/favicon.ico' type='image/x-icon' >
 </head>
 <body background="bkg.jpg">
  
@@ -60,7 +59,7 @@
 
 <br/><br/><br/>
 
-<script src="getgoogleevents.js"></script>
+<script src="javascript/getgoogleevents.js"></script>
 <script src='https://apis.google.com/js/client.js?onload=handleClientLoad'></script>
 <!--  
 <div id='content'>

@@ -25,12 +25,13 @@
 }
 </style>
 <title>Chef Page</title>
-	<link rel="stylesheet" href="bootstrap.min.css">
-    <script src="bootstrap.min.js"></script>   
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/font.css">
+	 <link rel="stylesheet" type="text/css" href="css/smallTable.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/RestaurantManager/font.css">
-    <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' >
-   <link rel="stylesheet" type="text/css" href="/RestaurantManager/smallTable.css">
+    <script src="jquery.countdown.js"></script>
+    <script src="jquery.countdown.min.js"></script>    
+    <link rel='shortcut icon' href='favicon/favicon.ico' type='image/x-icon' >  
 </head>
 <body background="bkg.jpg">
 <%
@@ -142,6 +143,6 @@
 </div>
 </div>
 <br/><br/>
-<script src="timer.js"></script>
+<script src="javascript/timer.js"> </script>
 </body>
 </html>
