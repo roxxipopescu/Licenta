@@ -157,6 +157,9 @@ public class UserDao {
             user1.setUserName(newUser.getUserName());
             user1.setPassword(newUser.getPassword());
             user1.setRole(newUser.getRole());
+            user1.setBirthdate(newUser.getBirthdate());
+            user1.setTelephone(newUser.getTelephone());
+            user1.setContractnb(newUser.getContractnb());
             session.update(user1);
             tx.commit();
         } catch (HibernateException e)

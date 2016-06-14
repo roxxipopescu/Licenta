@@ -29,6 +29,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Table Service</title>
 	<link rel="stylesheet" href="bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/RestaurantManager/font.css">
     <script src="bootstrap.min.js"></script>
     <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' >   
 </head>
@@ -66,17 +67,24 @@
   List<RestaurantTables> myrtList = null;
   myrtList = rtDao.findRestaurantTables();
   
+  String buttState="";
   
+  if (t.getState().equals("reserved"))
+	  buttState="Free table";
+  else
+	  buttState="Reserve this table";
   
   %>
  
-
 <h2 align="center" >Table no. <%=t.getId() %> </h2>
 
 <div class="row">
 <div class="col-md-12 ">
 <div class="col-md-6 text-left">
-   <input type="submit" value="Reserve this table" class="btn btn-primary" onclick="">  
+<form method="post"  action="crud_order">
+	<input type="hidden" name="idTable" value="<%=t.getId() %>" />
+   <input type="submit" value="<%=buttState %>" id="resButton" class="btn btn-primary" name="reserve_table"  >  
+   </form>
    </div>
    <div class="col-md-6 text-right">
     <input type="submit" class="btn btn-primary" value="Back" id="back" onclick="location.href = 'http://localhost:8080/RestaurantManager/User.jsp'; " >
@@ -180,7 +188,6 @@
   
     </div>
     </div>
-    
-    
+
 </body>
 </html>

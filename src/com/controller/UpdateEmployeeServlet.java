@@ -45,9 +45,9 @@ public class UpdateEmployeeServlet extends HttpServlet {
 	            
 	            User newUser = new User( name, surname, username, password, role, birthdate, telephone, contractnb);
 	            UserDao uDao2 = new UserDao(new Configuration().configure().buildSessionFactory());
-	            uDao2.updateUser(uDao2.findUser(idToUpdate), newUser);
+	            uDao2.updateUser(b, newUser);
 
-	           // response.sendRedirect("Admin.jsp");	
+	            response.sendRedirect("Admin.jsp");	
 		 }
 	}
 

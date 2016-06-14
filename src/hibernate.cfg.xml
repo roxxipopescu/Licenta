@@ -22,5 +22,6 @@
       <mapping class="com.model.Menu" />
       <mapping class="com.model.Chef" />
       <mapping class="com.model.RestaurantTables" />
+      <mapping class="com.model.FidelityCards" />
   </session-factory>
 </hibernate-configuration>

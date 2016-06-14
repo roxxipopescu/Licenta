@@ -99,6 +99,12 @@
 </dependency>
   	
   	<dependency>
+      <groupId>com.google.apis</groupId>
+      <artifactId>google-api-services-calendar</artifactId>
+      <version>v3-rev191-1.22.0</version>
+    </dependency>
+  	
+  	<dependency>
 	<groupId>javax.transaction</groupId>
 	<artifactId>jta</artifactId>
 	<version>1.1</version>

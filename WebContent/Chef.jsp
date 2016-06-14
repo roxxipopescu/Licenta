@@ -28,7 +28,7 @@
 	<link rel="stylesheet" href="bootstrap.min.css">
     <script src="bootstrap.min.js"></script>   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    
+    <link rel="stylesheet" type="text/css" href="/RestaurantManager/font.css">
     <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' >
    <link rel="stylesheet" type="text/css" href="/RestaurantManager/smallTable.css">
 </head>
@@ -87,6 +87,10 @@
 <br/><br/>
 
 <br/><br/>
+<div class="col-md-12 text-center">
+<h4>Pending orders</h4>
+</div>
+<br/><br/><br/>
 <div class="row">
 <div class="col-md-12">
 <div class="col-md-2">
@@ -112,7 +116,7 @@
             	           
         %>
 		 <tr>			
-		 <td><span id="countdown">c</span> <br/> <span id="notifier">minutes</span></td>	  
+		 <td><span id="countdown"></span> <br/> <span id="notifier">minutes</span></td>	  
 		  <td><%= mychef.getTableId() %> </td>
 		  <td><%= mychef.getWaiterName() %></td>
 		  <td><%= mychef.getQuantity() %></td>

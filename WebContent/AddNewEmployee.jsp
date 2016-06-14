@@ -7,6 +7,7 @@
 <title>Add new employee</title>
 <link rel="stylesheet" href="bootstrap.min.css">
     <script src="bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/RestaurantManager/font.css">
     <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' >
    <link rel="stylesheet" type="text/css" href="/RestaurantManager/smallTable.css">
 </head>

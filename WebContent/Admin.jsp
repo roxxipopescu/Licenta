@@ -12,6 +12,7 @@
 <title>Admin Page</title>
 	<link rel="stylesheet" href="bootstrap.min.css">
     <script src="bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/RestaurantManager/font.css">
     <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' >
     <link href="http://addtocalendar.com/atc/1.5/atc-style-blue.css" rel="stylesheet" type="text/css">
 </head>
@@ -95,7 +96,7 @@
 </div>
 
  <div class="col-md-6 ">
- <div class="col-md-3 ">
+ <div class="col-md-4 text-left ">
  <h4>Employees table</h4>
  </div>
  <div class="col-md-5 text-right">                                         

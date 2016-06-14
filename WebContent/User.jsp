@@ -11,6 +11,7 @@
 <title>Waiter Page</title>
 	<link rel="stylesheet" href="bootstrap.min.css">
     <script src="bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/RestaurantManager/font.css">
     <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' >
    <link rel="stylesheet" type="text/css" href="/RestaurantManager/smallTable.css">
 </head>
@@ -33,7 +34,7 @@
   RestaurantTablesDao rtDao = new RestaurantTablesDao(new Configuration().configure().buildSessionFactory());
   List<RestaurantTables> myrtList = null;
   myrtList = rtDao.findRestaurantTables();
-  
+   
   
 %>
 <div class="span7 text-center">
@@ -42,10 +43,8 @@
 <br/><br/>
 <div class="row">
 <div class="col-md-12">
-<div class="col-md-1 text-right">   
-   <form action="FidelityServlet" method="post">
-    <input type="submit" value="Fidelity Card Owners" class="btn btn-primary ">
-  </form>
+<div class="col-md-1 text-right">     
+    <input type="submit" value="Fidelity Card Owners" class="btn btn-primary" onclick="window.location = 'http://localhost:8080/RestaurantManager/FidelityCardOwners.jsp';"> 
 </div>
 
 <div class="col-md-11 text-right">
@@ -58,10 +57,21 @@
 </div>
 
 <br/><br/>
-<br/><br/>
+<br/>
 
 <div class="row">
+
 <div class="col-md-4 text-center">
+<% if  (myrtList.get(0).getState().equals("free"))
+	{	
+%>
+		<img src="one.png" id="one">
+	<%}
+   else  if  (myrtList.get(0).getState().equals("reserved")){
+%>
+		<img src="onered.png" id="one">
+	<%}
+%>
 <div class="seat">
 <img  src="seat.png" >
 </div>
@@ -79,6 +89,7 @@
 </div>
 
 <div class="col-md-4 text-center">
+<img src="2.png" id="two">
 <div class="seat"> 
 <img src="seat.png" >
 </div>
@@ -113,6 +124,7 @@
 </div>
 
 <div class="col-md-4 text-center">
+<img src="3.png" id="three">
 <div class="seat">
 <img src="seat.png" >
 </div>
@@ -138,12 +150,14 @@
 
 <div class="row">
 <div class="col-md-4 text-center">
+
 <div class="seatBigLeft">
 <img src="seat.png">
 </div>
 </div>
 
 <div class="col-md-4 text-center">
+<img src="4.png" id="four">
 <div class="seat">
 <img src="seat.png" >
 </div>
@@ -188,7 +202,7 @@
 
 
 <div class="col-md-6 text-center">
-
+<img src="5.png" id="five">
 <div class="seat">
 <img src="seat.png" >
 </div>
@@ -196,6 +210,7 @@
 <div class="row">
 
 <div class="col-md-4 text-right ">
+
 <div class="seat3d">
 <img src="seat3.png" >
 </div>

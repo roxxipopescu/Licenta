@@ -1,3 +1,11 @@
+<%@ page import="org.hibernate.cfg.Configuration" %>
+<%@ page import="java.util.List" %>
+<%@ page import= "com.google.api.services.calendar.Calendar"%>
+<%@ page import= "com.google.api.services.calendar.model.Event"%>
+<%@ page import= "com.google.api.services.calendar.model.Events"%>
+<%@ page import="java.io.PrintWriter" %>
+<%@ page import="com.model.FidelityCards" %>
+<%@ page import="com.dao.FidelityCardsDao" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -6,13 +14,63 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Email Invitations</title>
 <link rel="stylesheet" href="bootstrap.min.css">
-    <script src="bootstrap.min.js"></script>
+    <script src="bootstrap.min.js"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script src="jquery.googlecalreader-1.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/RestaurantManager/font.css">
     <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' >
 </head>
 <body background="bkg.jpg">
-<h3 align = "center">Event Invitation</h3>
-<br/><br/>
+ 
+<%
+  String user = null;
+  if(session.getAttribute("user") == null){
+    response.sendRedirect("index.html");
+  }else user = (String) session.getAttribute("user");
+  String userName = null;
+  String sessionID = null;
+  Cookie[] cookies = request.getCookies();
+  if(cookies !=null){
+    for(Cookie cookie : cookies){
+      if(cookie.getName().equals("user")) userName = cookie.getValue();
+      if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
+    }
+  }
+  
+  FidelityCardsDao fcDao = new FidelityCardsDao(new Configuration().configure().buildSessionFactory());
+  List<FidelityCards> myList = null;
+  myList = fcDao.findFidelityCards();
+  if(!myList.isEmpty()){
+  FidelityCards i = myList.get(0);
+  }
+    
+  %>
 
+<h3 align = "center">Event Invitation</h3>
+<br/>
+<div class="row">
+<div class="col-md-12 ">
+<div class="col-md-6 text-left">
+   </div>
+   <div class="col-md-6 text-right">
+    <input type="submit" class="btn btn-primary" value="Back" id="back" onclick="goBack()" >
+  </div>
+  </div>
+  </div>
+
+<br/><br/><br/>
+
+<script src="getgoogleevents.js"></script>
+<script src='https://apis.google.com/js/client.js?onload=handleClientLoad'></script>
+<!--  
+<div id='content'>
+    <h1 id='calendar' style="color:grey">LOADING . . . .</h1>
+    <ul id='events'></ul>
+    </div>
+    <p id='updated' style="font-size:12; color:grey">updating . . . . .</p>
+    -->
+
+<br/><br/>
  <div class = "row">
    <div class="col-md-3 text-center">
    <h4>Event name:</h4>
@@ -32,36 +90,31 @@
    </textarea>
     </div>
     </div>
-    <br/><br/><br/>
+    <br/><br/><br/><br/>
     <div class="span7 text-center">
-     <input type="submit" class="btn btn-info" name="send_email" value="Send invitaion" onclick="return confirm('Invitation sent!');">
+     <input type="submit" class="btn btn-primary" name="send_email" value="Send invitaion" onclick="return confirm('Invitation sent!');">
      </div>
-   <br/><br/>
+   <br/><br/><br/>
    <div class="row">
     <div class="col-md-5 text-center ">
     </div>
-    <div class="col-md-5  ">
-    <form action="">
-	<input type="checkbox" name="vehicle" value="Bike">roxxi.popescu@gmail.com<br>
-	<input type="checkbox" name="vehicle" value="Car">ana_blandiana@gmail.com <br>
-	<input type="checkbox" name="vehicle" value="Bike">peter.scotch@gmail.com<br>
-	<input type="checkbox" name="vehicle" value="Car">ionpop@gmail.com 
-	</form>
+    <div class="col-md-5  " id="da">
+   
+    <% for (FidelityCards fc : myList){   
+    %>
+	<input type="checkbox" id="list" name="email">  <%=fc.getEmail() %><br>	
+	<%} %>
+	
     </div>
     </div>
  
-   
-   <br/><br/><br/>
-   <div class="row">
-   <div class="span7 text-center">
-   <input type="submit" class="btn btn-default" value="Back" onclick="goBack()" >
-    </div>
-    </div>
+  
 
 <script>
 function goBack() {
     window.history.back();
 }
+
 </script>
 
 </body>

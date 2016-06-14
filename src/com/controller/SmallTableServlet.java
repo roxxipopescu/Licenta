@@ -15,8 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.hibernate.cfg.Configuration;
 
 import com.dao.OrderDao;
+import com.dao.RestaurantTablesDao;
 import com.dao.UserDao;
 import com.model.Order;
+import com.model.RestaurantTables;
 import com.model.User;
 import com.dao.ChefDao;
 import com.dao.IncomeDao;
@@ -81,6 +83,26 @@ public class SmallTableServlet extends HttpServlet {
 	            request.getRequestDispatcher("EditOrder.jsp").forward(request,response);
 			 
 		 }
+		
+		 else if (request.getParameter("reserve_table")!=null)
+			{
+				String idToReserve = request.getParameter("idTable");
+				String isReserved = request.getParameter("reserve_table");
+				String newState = "";
+				
+				if(isReserved.equals("Reserve this table")){
+					 newState = "reserved";
+				}
+				else if (isReserved.equals("Free table")){
+					newState = "free";
+				}
+												
+				RestaurantTables newRt = new RestaurantTables(Integer.parseInt(idToReserve), newState);				
+				RestaurantTablesDao rtDao = new RestaurantTablesDao(new Configuration().configure().buildSessionFactory());
+				rtDao.updateRT(rtDao.findRestaurantTable(Integer.parseInt(idToReserve)), newRt);
+												
+				request.getRequestDispatcher("User.jsp").forward(request, response);
+			}
 		 
 		 else if (request.getParameter("close_order")!=null)
 		 {
