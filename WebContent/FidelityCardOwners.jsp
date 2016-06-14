@@ -81,9 +81,7 @@ margin-top:65px;
 
 
 <div class="span7 text-center">
- <form method="post" action="InvitationServlet">
- <input type="submit" class="btn btn-primary" name="send_invitation" value="Send invitations ">
- </form>
+ <input type="submit" class="btn btn-primary"  value="Send invitations " onclick="window.location = 'http://localhost:8080/RestaurantManager/SendInvitations.jsp';">
  </div>
  <br/>
 <div class="row">

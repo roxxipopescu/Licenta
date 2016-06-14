@@ -71,6 +71,7 @@
     -->
 
 <br/><br/>
+<form method="post" action="sendInvitation" >
  <div class = "row">
    <div class="col-md-3 text-center">
    <h4>Event name:</h4>
@@ -86,7 +87,7 @@
     </div>
     <div class="col-md-3 text-center ">
    <h4>Description:</h4>
-   <textarea rows="3" cols="25">
+   <textarea name="eventDescription" rows="3" cols="25">
    </textarea>
     </div>
     </div>
@@ -102,12 +103,12 @@
    
     <% for (FidelityCards fc : myList){   
     %>
-	<input type="checkbox" id="list" name="email">  <%=fc.getEmail() %><br>	
+	<input type="checkbox" id="list" name="emails" value="<%=fc.getEmail() %>"> <%=fc.getEmail() %><br>	
 	<%} %>
 	
     </div>
     </div>
- 
+ </form>
   
 
 <script>

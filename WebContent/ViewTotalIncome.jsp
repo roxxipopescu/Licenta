@@ -44,7 +44,7 @@
   List<User> myuList = null;
   myuList = userDao.findUsers();
   String uName="";
-  double sum=0;
+  double sum=0.0;
   
   for (Income myincome : myList) {
   	sum=sum+myincome.getOrderTotalCost();

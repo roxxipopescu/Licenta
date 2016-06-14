@@ -89,4 +89,12 @@
     <servlet-name>edit_fidelitycard</servlet-name>
     <url-pattern>/edit_fidelitycard</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <servlet-name>sendInvitation</servlet-name>
+    <servlet-class>com.controller.InvitationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>sendInvitation</servlet-name>
+    <url-pattern>/sendInvitation</url-pattern>
+  </servlet-mapping>
 </web-app>

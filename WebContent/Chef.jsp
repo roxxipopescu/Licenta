@@ -115,15 +115,15 @@
             for (Chef mychef : myChefList) {
             	           
         %>
-		 <tr>			
-		 <td><span id="countdown"></span> <br/> <span id="notifier">minutes</span></td>	  
+		 <tr >			
+		 <td><span id="countdown" ></span> <br/> <span id="notifier">minutes</span></td>	  
 		  <td><%= mychef.getTableId() %> </td>
 		  <td><%= mychef.getWaiterName() %></td>
 		  <td><%= mychef.getQuantity() %></td>
 		  <td><%= mychef.getDish() %></td>		  
 		  <td><%= mychef.getTime() %></td>
 		  <td class="center"><input type="number" min="0" max="100" step="1" id="nb"  name="prepTime" value="1" /> min(s)</td>
-		  <td><div class="btn btn-link" id="send_timer" >Start timer</div>
+		  <td><input type="submit" class="btn btn-link" id="send_timer" value="Start timer" onclick="startTimer()" >
               <form method="post" action="chef_ops">
                     <input type="hidden" name="id" value="<%= mychef.getId() %>" />
                     <input type="hidden" name="chefUserId" value="<%= myChefId %>" />

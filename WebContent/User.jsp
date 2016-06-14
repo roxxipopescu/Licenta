@@ -89,7 +89,16 @@
 </div>
 
 <div class="col-md-4 text-center">
-<img src="2.png" id="two">
+<% if  (myrtList.get(1).getState().equals("free"))
+	{	
+%>
+		<img src="2.png" id="two">
+	<%}
+   else  if  (myrtList.get(1).getState().equals("reserved")){
+%>
+		<img src="2red.png" id="two">
+	<%}
+%>
 <div class="seat"> 
 <img src="seat.png" >
 </div>
@@ -124,7 +133,16 @@
 </div>
 
 <div class="col-md-4 text-center">
-<img src="3.png" id="three">
+<% if  (myrtList.get(2).getState().equals("free"))
+	{	
+%>
+		<img src="3.png" id="three">
+	<%}
+   else  if  (myrtList.get(2).getState().equals("reserved")){
+%>
+		<img src="3red.png" id="three">
+	<%}
+%>
 <div class="seat">
 <img src="seat.png" >
 </div>
@@ -157,7 +175,16 @@
 </div>
 
 <div class="col-md-4 text-center">
-<img src="4.png" id="four">
+<% if  (myrtList.get(3).getState().equals("free"))
+	{	
+%>
+		<img src="4.png" id="four" >
+	<%}
+   else  if  (myrtList.get(3).getState().equals("reserved")){
+%>
+		<img src="4red.png" id="four">
+	<%}
+%>
 <div class="seat">
 <img src="seat.png" >
 </div>
@@ -202,7 +229,16 @@
 
 
 <div class="col-md-6 text-center">
-<img src="5.png" id="five">
+<% if  (myrtList.get(4).getState().equals("free"))
+	{	
+%>
+		<img src="5.png" id="five">
+	<%}
+   else  if  (myrtList.get(4).getState().equals("reserved")){
+%>
+		<img src="5red.png" id="five">
+	<%}
+%>
 <div class="seat">
 <img src="seat.png" >
 </div>

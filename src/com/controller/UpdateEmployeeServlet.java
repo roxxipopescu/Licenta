@@ -3,6 +3,7 @@ package com.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,6 +35,7 @@ public class UpdateEmployeeServlet extends HttpServlet {
 	           User b = (User)request.getSession().getAttribute("toBeUpdated");
 	           int idToUpdate = (int)request.getSession().getAttribute("idToUp");
 
+	          
 	            String name=request.getParameter("name");
 	            String surname=request.getParameter("surname");
 	            String role=request.getParameter("role");

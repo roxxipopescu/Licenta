@@ -15,9 +15,6 @@ import org.hibernate.cfg.Configuration;
 import com.model.User;
 import com.dao.UserDao;
 
-/**
- * Servlet implementation class LogInServlet
- */
 
 public class LogInServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -26,8 +23,7 @@ public class LogInServlet extends HttpServlet {
         response.getWriter().append("Served at: fmm ").append(request.getContextPath());
 
     }
-	
-	
+		
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		 String user =request.getParameter("userName");

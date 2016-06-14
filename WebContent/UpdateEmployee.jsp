@@ -2,6 +2,7 @@
 <%@ page import="com.model.User" %>
 <%@ page import="org.hibernate.cfg.Configuration" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.Arrays" %>
 <%@ page import="java.io.PrintWriter" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -58,7 +59,10 @@ text-align: center;
 	  height=200;
 	  width=180;
 	  }
-	  
+	
+  List<String> roles = Arrays.asList("waiter", "chef", "admin");
+  
+  
 %>
 
 <div class="span7 text-center">
@@ -86,12 +90,27 @@ text-align: center;
 <h4>Surame:</h4>
 <input type="text" name="surname" size="17" value="<%=a.getLastName() %>">
 <h4>Role:</h4>
-<input list="roles" name="role" type="text" size="17" value="<%=a.getRole() %>">
-<datalist id="roles">
-    <option value="chef"/>
-    <option value="waiter"/>
-    <option value="admin"/>   
-</datalist>
+<select name="role" id="dropd" >
+<%
+	for (int i=0; i<3; i++)
+	{ 
+		if (a.getRole().equals(roles.get(i)))
+			{
+	
+%>
+		<option selected><%=a.getRole() %></option>	
+		<%}
+		else {
+		%>	
+		 <option><%=roles.get(i) %></option>
+		 
+		
+<%
+			}
+	}
+%>
+</select>
+
 <h4>Birthdate:</h4>
 <input type="date" name="birthdate"  value="<%=a.getBirthdate() %>">
 </div>

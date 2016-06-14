@@ -1,7 +1,7 @@
 
-function display( notifier, str )
+function display(notifier, str )
 {
-    document.getElementById( notifier ).innerHTML = str;
+	document.getElementById( notifier ).innerHTML = str;
 }
 
 function toMinuteAndSecond( x )
@@ -19,9 +19,11 @@ function setTimer( remain, actions )
     })();
 }
 
-document.getElementById( 'send_timer' ).onclick = function()
-{
+
+function startTimer()
+{	
 	var time=document.getElementById('nb').value * 60;
+		
     setTimer( time, {   	
         59: function()
         {
@@ -33,4 +35,6 @@ document.getElementById( 'send_timer' ).onclick = function()
         }
     } );
 }
+
+
 

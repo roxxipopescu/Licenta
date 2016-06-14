@@ -30,6 +30,18 @@
   
   
 %>
+ <script type="text/javascript">
+
+window.onunload = refreshParent;
+function refreshParent() {
+    window.opener.location.reload();
+}
+
+function closeSelf(){
+    self.close();
+    return true;
+}
+</script>
  
  <br/>
   <form method="post"  action="crud_employer" onsubmit="return closeSelf()">
@@ -66,18 +78,7 @@
 </div>
 </form> 
 
-<script type="text/javascript">
 
-window.onunload = refreshParent;
-function refreshParent() {
-    window.opener.location.reload();
-}
-
-function closeSelf(){
-    self.close();
-    return true;
-}
-</script>
 
 
 </body>
