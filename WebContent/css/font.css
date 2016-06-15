@@ -11,7 +11,9 @@ body {
 	margin-left:20px;
 }
 
-fidelitycardowners
+
+
+/*Fidelity card owners */
 
 #namef{
 margin-right:60px;
@@ -29,7 +31,7 @@ text-align:center;
 #emailf{
 margin-right:30px;
 }
-#email2{
+#email2f{
 margin-right:8px;
 }
 #buttf{
@@ -37,7 +39,7 @@ margin-left:37px;
 margin-top:65px;
 }
 
-table
+/*Table*/
 
 #backt{
 	width:150px;

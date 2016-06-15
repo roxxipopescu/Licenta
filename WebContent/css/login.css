@@ -42,6 +42,7 @@ input {
 }
 
 .site__container {
+	margin-bottom:15px;
     -webkit-box-flex: 1;
     -webkit-flex: 1;
     -ms-flex: 1;
@@ -63,7 +64,8 @@ input {
     padding: 1rem;
 }
 .form--login label {
-    background-color: #ff9428;
+    background-color: #BD7594;
+    color: #dcc7da;
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
     padding-left: 1.25rem;
@@ -78,13 +80,14 @@ input {
     background-color: #65707c;
 }
 .form--login input[type="submit"] {
-    background-color: #65707c;
-    color: #eee;
+    background-color: #BD7594;
+    color: #dcc7da;
     font-weight: bold;
     text-transform: uppercase;
 }
 .form--login input[type="submit"]:focus, .form--login input[type="submit"]:hover {
-    background-color: #ff9428;
+    background-color: #aa5177;
+    
 }
 .form__field {
     display: -webkit-box;
