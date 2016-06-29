@@ -21,10 +21,8 @@
   if(session.getAttribute("user") == null){
     response.sendRedirect("index.html");
   }
-
-  else if(session.getAttribute("role").equals("user")){
+  else if ( !session.getAttribute("role").equals("admin")){
     response.sendRedirect("index.html");
-
   }
   else user = (String) session.getAttribute("user");
   String userName = null;

@@ -1,4 +1,3 @@
-
 function display(notifier, str )
 {
 	document.getElementById( notifier ).innerHTML = str;
@@ -35,6 +34,3 @@ function startTimer()
         }
     } );
 }
-
-
-

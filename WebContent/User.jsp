@@ -18,9 +18,14 @@
 <%
   String user = null;
   if(session.getAttribute("user") == null){
-    response.sendRedirect("index.html");
-  }else user = (String) session.getAttribute("user");
+    response.sendRedirect("index.html");}
+    else if( !session.getAttribute("role").equals("waiter")){
+        response.sendRedirect("index.html");}
+  else 
+	  user = (String) session.getAttribute("user");
+  
   String userName = null;
+  String role = null;
   String sessionID = null;
   Cookie[] cookies = request.getCookies();
   if(cookies !=null){

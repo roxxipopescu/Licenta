@@ -75,10 +75,7 @@ public class ChefPageServlet extends HttpServlet {
             response.sendRedirect("Chef.jsp");			 
 		 }
 		
-		else if (request.getParameter("send_timer")!=null)
-		{
-			
-		}
+		
 	}
 
 }

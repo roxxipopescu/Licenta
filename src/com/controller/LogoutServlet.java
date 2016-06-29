@@ -22,8 +22,8 @@ public class LogoutServlet extends HttpServlet {
         Cookie[] cookies = request.getCookies();
         if(cookies != null){
             for(Cookie cookie : cookies){
-                if(cookie.getName().equals("JSESSIONID")){
-                    System.out.println("JSESSIONID="+cookie.getValue());
+                if(cookie.getName().equals("role")){
+                    System.out.println("roleCookie="+cookie.getValue());
                     break;
                 }
             }
@@ -31,6 +31,7 @@ public class LogoutServlet extends HttpServlet {
         //invalidate the session if exists
         HttpSession session = request.getSession(false);
         System.out.println("User="+session.getAttribute("user"));
+        System.out.println("RoleSession="+session.getAttribute("role"));
         if(session != null){
             session.invalidate();
         }

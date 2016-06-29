@@ -29,8 +29,8 @@
 	<link rel="stylesheet" type="text/css" href="css/font.css">
 	 <link rel="stylesheet" type="text/css" href="css/smallTable.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <script src="jquery.countdown.js"></script>
-    <script src="jquery.countdown.min.js"></script>    
+    <script src="javascript/jquery.countdown.js"></script>
+    <script src="javascript/jquery.countdown.min.js"></script>    
     <link rel='shortcut icon' href='favicon/favicon.ico' type='image/x-icon' >  
 </head>
 <body background="bkg.jpg">
@@ -38,7 +38,10 @@
   String user = null;
   if(session.getAttribute("user") == null){
     response.sendRedirect("index.html");
-  }else user = (String) session.getAttribute("user");
+  }
+  else if( !session.getAttribute("role").equals("chef")){
+      response.sendRedirect("index.html");}
+  else user = (String) session.getAttribute("user");
   String userName = null;
   String sessionID = null;
   Cookie[] cookies = request.getCookies();
@@ -97,7 +100,7 @@
 <div class="col-md-2">
 </div>
 <div class="col-md-8">
-  <table class="table" border="3">
+  <table class="table" border="3" id="table">
         <thead>
         <tr>    
         <th>Timer</th>    
@@ -123,8 +126,8 @@
 		  <td><%= mychef.getQuantity() %></td>
 		  <td><%= mychef.getDish() %></td>		  
 		  <td><%= mychef.getTime() %></td>
-		  <td class="center"><input type="number" min="0" max="100" step="1" id="nb"  name="prepTime" value="1" /> min(s)</td>
-		  <td><input type="submit" class="btn btn-link" id="send_timer" value="Start timer" onclick="startTimer()" >
+		  <td class="center"><input type="number" min="0" max="100" step="1" id="nb"  name="prepTime" value="1" /></td>
+		  <td><input type="submit" class="btn btn-link" id="send_timer" value="Start timer" onclick="startTimer(this)" >
               <form method="post" action="chef_ops">
                     <input type="hidden" name="id" value="<%= mychef.getId() %>" />
                     <input type="hidden" name="chefUserId" value="<%= myChefId %>" />
